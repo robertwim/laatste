@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On the Road Again!</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Eigen CSS -->
+   
+  <style>
+
+
+   
+    body {
+      background-color: #fff8dc;
+      font-family: 'Dancing Script', cursive;
+      padding-top: 16px; /* of 16px voor iets meer ademruimte */
+    }
+
+    .navbar-brand {
+  font-family: 'Special Elite', serif;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #5a4632 !important;
+}
+
+
+    .navbar-nav .nav-item.active .nav-link {
+      color: #c2a679 !important;
+      font-weight: bold;
+      border-bottom: 2px solid #c2a679;
+    }
+.navbar-nav .nav-link {
+  font-family: 'Special Elite', serif;
+  font-size: 1.1em;
+  color: #5a4632 !important;
+}
+.navbar-nav .nav-link:hover {
+  color: #c2a679 !important;
+  text-decoration: underline;
+}
+.navbar-nav .nav-item {
+  margin-right: 12px; /* ruimte tussen knoppen */
+}
+
+.custom-navbar.sticky-top {
+  top: 12px; /* 👈 schuift de navbar ~5mm onder de bovenrand */
+  z-index: 1030;
+}
+.navbar-nav .nav-link {
+  font-family: 'Special Elite', serif;
+  font-size: 1.1em;
+  color: #5a4632 !important;
+  background-color: #f5e9d4;
+  border: 1px solid #c2a679;
+  border-radius: 20px;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #e8dcc2;
+  color: #c2a679 !important;
+  text-decoration: none;
+}
+.navbar-nav .nav-item.active .nav-link {
+  color: #c2a679 !important;
+  font-weight: bold;
+  border-bottom: 2px solid #c2a679;
+}
+.navbar-nav .nav-item.active .nav-link {
+  background-color: #e8dcc2;
+  border: 2px solid #c2a679;
+  font-weight: bold;
+}
+.navbar {
+  background-color: #f5e9d4; /* warme beige tint */
+  border-radius: 12px;
+  width: 95%;
+  margin: 0 auto 20px auto; /* centreren + ruimte onder */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid #c2a679;
+}
+    .thumbnail {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      border: 2px groove #000;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+.carousel-caption.custom-caption.dark-caption {
+  color: #002147; /* ✨ donkerblauw: Oxford Blue */
+  text-shadow: 1px 1px 3px rgba(255,255,255,0.6); /* optioneel: subtiele witglans voor leesbaarheid */
+}
+
+    .caption {
+      font-size: 16px;
+      color: #4b3f2f;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .gallery-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+    }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+    .gallery-item {
+      text-align: center;
+      width: 200px;
+    }
+
+    
+    
+
+    .form-container {
+  max-width: 600px;
+  margin: 40px auto 0 auto; /* ✨ centrering + afstand boven */
+  padding: 20px;
+  text-align: center;
+}
+
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #a67c52;
+      border-radius: 8px;
+      font-size: 18px;
+      background-color: #fff;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background-color: #a67c52;
+      color: #fff8e1;
+      border: none;
+      padding: 12px 24px;
+      font-size: 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #8b5e3c;
+    }
+.blog-editor h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.blog-editor p {
+  font-size: 30px;
+  line-height: 2.8;
+}
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-family: 'Dancing Script', cursive;
+      color: #a67c52;
+    }
+
+    footer a {
+      color: #a67c52;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Algemene tekststijl voor reisverhalen */
+/* Datumregel (h3) — subtiel en cursief */
+
+.blog-editor {
+  background: #fff8e1;
+  border: 2px solid #a67c52;       /* 👈 warme bruine rand */
+  border-radius: 12px;             /* 👈 afgeronde hoeken */
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+
+
+.blog-editor h3 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: italic;
+  color: #5a4632;
+  margin-bottom: 8px;
+}
+
+/* Blogtekst (p) — leesbaar en elegant */
+.blog-editor p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4b3f2f;
+  margin-bottom: 0;
+}
+
+
+/* Onderschriften onder thumbnails */
+
+.caption {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  color: #7a7a7a;
+  line-height: 1.4;
+  margin-top: 8px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.caption:hover {
+  color: #a67c52;
+  text-shadow: 0 0 4px rgba(166, 124, 82, 0.4);
+}
+
+.modal-dialog {
+  max-width: 95vw;       /* 👈 bijna volledige schermbreedte */
+  max-height: 95vh;      /* 👈 bijna volledige schermhoogte */
+  margin: auto;
+}
+.modal-img {
+  width: 100%;
+  max-width: 100%; 
+  height: auto;
+  max-height: 90vh;      /* 👈 voorkomt dat de foto te hoog wordt */
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+.modal-backdrop {
+  background-color: #000 !important; /* 👈 maakt de overlay zwart */
+  opacity: 0.9 !important;           /* 👈 iets doorschijnend voor dieptegevoel */
+}
+.modal-caption {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.modal-caption.show {
+  opacity: 1;
+}
+/* Fade-in animatie */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.fade-in {
+  animation: slideFadeInModal 0.8s ease-out;
+}
+
+.fade-out {
+  animation: slideFadeOutModal 1s ease-in;
+}
+
+
+/* Pas toe op modal-content */
+
+@keyframes slideFadeInModal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes slideFadeOutModal {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+}
+.modal-content {
+  animation: slideFadeInModal 0.8s ease-out;
+}
+.modal-backdrop {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.modal-backdrop.show {
+  opacity: 0,4; /* of 1 voor volledig zwart */
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-4 custom-navbar">
+    <div class="container">
+      <a class="navbar-brand site-title" href="#">On the road again!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="westerdam.html">Westerdam</a></li>
+          <li class="nav-item"><a class="nav-link" href="fotoblok.html">Wereldreis Foto`s</a></li>
+          <li class="nav-item"><a class="nav-link" href="krant.html">Nieuws!</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Slider -->
+<div class="container mb-5">
+  <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+  <img class="d-block w-100 slide-image" src="images/travel.jpg" alt="Slide 1">
+  <div class="carousel-caption custom-caption dark-caption">
+    <h5>Welkom op ons blog</h5>
+    <p>Bekijk onze nieuwste verhalen en foto's</p>
+  </div>
+</div>
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img class="d-block w-100 slide-image" src="images/bon2.jpg" alt="Slide 2">
+        <div class="carousel-caption custom-caption">
+          <h5>Reizen & Inspiratie</h5>
+          <p>Ontdek de wereld door mijn lens</p>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img class="d-block w-100 slide-image" src="images/bon3.jpg" alt="Slide 3">
+        <div class="carousel-caption custom-caption">
+          <h5>Persoonlijke verhalen</h5>
+          <p>Een kijkje in ons leven</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+</div>
+<!-- Blogberichttekstvak -->
+<div class="container mb-4">
+  <div class="blog-editor">
+    <h3 contenteditable="true"><strong>📍 Thuis, 18 september 2025</strong></h3>
+    <p contenteditable="true">Typ hier je reiservaring...</p>
+  </div>
+</div>
+
+<!-- 📸 Galerij -->
+
+<!-- 📸 Galerijcontainer -->
+<div class="gallery">
+  <div class="gallery-item">
+    <img src="images/haan.jpg" class="thumbnail" onclick="openModal(this.src, 'Het park bij zonsopgang')" />
+    <div class="caption">Het park bij zonsopgang</div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/gras.jpg" class="thumbnail" onclick="openModal(this.src, 'Zicht op het water')" />
+    <div class="caption">Zicht op het water</div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/fjord.jpg" class="thumbnail" onclick="openModal(this.src, 'Een nieuwsgierige eend')" />
+    <div class="caption">Een nieuwsgierige eend</div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/zee.jpg"class="thumbnail" onclick="openModal(this.src, 'Zon over het veld')" />
+    <div class="caption">Zon over het veld</div>
+  </div>
+</div>
+
+<!-- 🔍 Vergrotingsvenster -->
+<div class="modal fade" id="fotoModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark border-0 position-relative rounded-lg shadow-lg">
+      <button type="button" class="close text-white position-absolute" style="top: 10px; right: 20px; font-size: 2rem;" data-dismiss="modal" aria-label="Sluiten">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <img id="modalImage" src="" alt="Vergrote foto" class="modal-img" />
+      <p id="modalCaption" class="modal-caption text-white text-center mt-3"></p>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Reactieformulier -->
+  <div class="container mb-5">
+    <div class="form-container">
+      <h2>Laat een bericht achter</h2>
+      <form action="https://formspree.io/f/mnngzygl" method="POST">
+        <input type="text" name="name" placeholder="Je naam" required>
+        <textarea name="message" rows="5" placeholder="Je bericht..." required></textarea>
+        <button type="submit">Verstuur</button>
+      </form>
+    </div>
+  </div>
+<!-- 🌅 Footer -->
+<footer class="site-footer mt-5">
+  <div class="container text-center py-4">
+    <p class="footer-text mb-1">© 2025 Robert’s Reisblog</p>
+    <p class="footer-subtext">Gemaakt met liefde, koffie en een camera 📷</p>
+  </div>
+</footer>
+
+
+  <!-- Bootstrap JS via CDN -->
+
+
+
+ <!-- jQuery Slim -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Jouw script -->
+
+<script>
+function openModal(imageSrc, captionText) {
+  const modalImage = document.getElementById('modalImage');
+  const modalCaption = document.getElementById('modalCaption');
+
+  modalImage.src = imageSrc;
+  modalCaption.textContent = captionText;
+  modalCaption.classList.remove('show'); // reset
+
+  $('#fotoModal').modal('show');
+
+  setTimeout(() => {
+    modalCaption.classList.add('show');
+  }, 300); // fade-in na openen
+}
+function openModal(imageSrc, captionText) {
+  const modalImage = document.getElementById('modalImage');
+  const modalCaption = document.getElementById('modalCaption');
+
+  modalImage.src = imageSrc;
+  modalCaption.textContent = captionText;
+  modalCaption.classList.remove('show'); // reset
+
+  $('#fotoModal').modal('show');
+
+  setTimeout(() => {
+    modalCaption.classList.add('show');
+  }, 300); // fade-in na openen
+}
+</script>
+
+</body>
+</html>
