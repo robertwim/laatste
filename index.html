@@ -294,37 +294,40 @@
   </div>
 
   <!-- 📸 Galerij -->
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="images/khao-lak.jpeg" class="thumbnail" onclick="openModal(this.src, 'THAILAND')" />
-      <div class="caption">THAILAND</div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/zweden.jpg" class="thumbnail" onclick="openModal(this.src, 'ZWEDEN')" />
-      <div class="caption">ZWEDEN</div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/Alaska.jpg" class="thumbnail" onclick="openModal(this.src, 'ALASKA')" />
-      <div class="caption">ALASKA</div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/konya.jpg" class="thumbnail" onclick="openModal(this.src, 'TURKIJE')" />
-      <div class="caption">TURKIJE</div>
-    </div>
+  <!-- 📸 Galerijcontainer -->
+<div class="gallery">
+  <div class="gallery-item">
+    <img src="images/khao-lak.jpeg" class="thumbnail" onclick="openModal(this.src, 'THAILAND')" />
+    <div class="caption">THAILAND</div>
   </div>
+  <div class="gallery-item">
+    <img src="images/zweden.jpg" class="thumbnail" onclick="openModal(this.src, 'ZWEDEN')" />
+    <div class="caption">ZWEDEN</div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/konya.jpg" class="thumbnail" onclick="openModal(this.src, 'TURKIJE')" />
+    <div class="caption">TURKIJE</div>
+  </div>
+  <div class="gallery-item">
+     <img src="images/alaska.jpg" class="thumbnail" onclick="openModal(this.src, 'ALASKA')" />
+    <div class="caption">ALASKA</div>
+  </div>
+</div>
 
   <!-- 🔍 Vergrotingsvenster -->
-  <div class="modal fade" id="fotoModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-      <div class="modal-content bg-dark border-0 position-relative rounded-lg shadow-lg">
-        <button type="button" class="close text-white position-absolute" style="top: 10px; right: 20px; font-size: 2rem;" data-dismiss="modal" aria-label="Sluiten">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <img id="modalImage" src="" alt="Vergrote foto" class="modal-img" />
-        <p id="modalCaption" class="modal-caption text-white text-center mt-3"></p>
-      </div>
+  <!-- 🔍 Vergrotingsvenster -->
+<div class="modal fade" id="fotoModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark border-0 position-relative rounded-lg shadow-lg">
+      <button type="button" class="close text-white position-absolute" style="top: 10px; right: 20px; font-size: 2rem;" data-dismiss="modal" aria-label="Sluiten">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <img id="modalImage" src="" alt="Vergrote foto" class="modal-img" />
+      <p id="modalCaption" class="modal-caption text-white text-center mt-3"></p>
     </div>
   </div>
+</div>
+
 
   <!-- 💬 Cusdis-reactiebox -->
   <div class="cusdis-wrapper">
@@ -357,6 +360,9 @@
     document.getElementById('modalCaption').textContent = caption;
     $('#fotoModal').modal('show');
   }
+  
+</script>
+
 </script>
 
 </body>
