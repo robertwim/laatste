@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -13,23 +12,22 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-/* === HOME/INDEX === */
+  body {
+    background-color: #fff8dc;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 16px;
+  }
 
-/* === ALGEMENE STIJLEN === */
-body {
-  background-color: #fff8dc;
-  font-family: 'Montserrat', sans-serif;
-  padding-top: 16px;
-}
-
-/* === NAVIGATIE === */
-.navbar {
+  /* Navbar */
+  .navbar {
   background-color: #f5e9d4;
   border-radius: 12px;
   margin: 0 auto;
   width: 95%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   border: 1px solid #c2a679;
+
+  
 }
 
 .navbar-brand {
@@ -65,33 +63,34 @@ body {
   font-weight: bold;
   border-bottom: 2px solid #c2a679;
 }
-/* === SLIDESHOW / CAROUSEL === */
-.carousel-item {
-  transition: opacity 1s ease-in-out;
-  min-height: 300px;
-}
 
-.carousel-inner {
-  width: 100%;
-  overflow: hidden;
-}
+  /* Slideshow */
+  .carousel-item {
+    transition: opacity 1s ease-in-out;
+    min-height: 300px;
+  }
 
-.slide-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+  .carousel-inner {
+    width: 100%;
+    overflow: hidden;
+  }
 
-.carousel-caption {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 1.2em;
-  color: #333;
-}
+  .slide-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
+  .carousel-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #333;
+  }
 #carouselExampleIndicators {
   margin-bottom: 3rem;
 }
+
 
 .highlight-slide h5,
 .highlight-slide p {
@@ -104,112 +103,119 @@ body {
   to {
     opacity: 1;
   }
+  @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* === THUMBNAILS / GALLERY === */
-.thumbnail {
-  width: 100%;
-  max-width: 200px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-  cursor: pointer;
-  border: 2px groove #000;
 }
 
-.thumbnail:hover {
-  transform: scale(1.05);
-}
+  /* Thumbnails */
+  .thumbnail {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    border: 2px groove #000;
+  }
 
-.caption {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #7a7a7a;
-  line-height: 1.4;
-  margin-top: 8px;
-  text-align: center;
-}
+  .thumbnail:hover {
+    transform: scale(1.05);
+  }
 
-.caption:hover {
-  color: #a67c52;
-  text-shadow: 0 0 4px rgba(166, 124, 82, 0.4);
-}
+  .caption {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #7a7a7a;
+    line-height: 1.4;
+    margin-top: 8px;
+    text-align: center;
+  }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-}
+  .caption:hover {
+    color: #a67c52;
+    text-shadow: 0 0 4px rgba(166, 124, 82, 0.4);
+  }
 
-.gallery-item {
-  text-align: center;
-  width: 200px;
-}
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+  }
 
-/* === BLOG EDITOR === */
-.blog-editor {
-  background: #fff8e1;
-  border: 2px solid #a67c52;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 1em;
-  line-height: 1.6;
-  max-width: 860px;
-  margin: 0 auto 20px auto; /* centreren + ondermarge */
-}
+  .gallery-item {
+    text-align: center;
+    width: 200px;
+  }
 
+  /* Blog editor */
+  .blog-editor {
+    background: #fff8e1;
+    border: 4px solid #ebbc8c;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.6;
+    text-align: center;
+  }
 
+  /* Contactformulier */
+  #contact-form {
+    max-width: 600px;
+    margin: 2em auto;
+    font-family: 'Montserrat', sans-serif;
+  }
 
-/* === CONTACTFORMULIER === */
-#contact-form {
-  max-width: 600px;
-  margin: 2em auto;
-  font-family: 'Montserrat', sans-serif;
-}
+  input, textarea {
+    width: 100%;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+  }
 
-input, textarea {
-  width: 100%;
-  margin: 0.5em 0;
-  padding: 0.5em;
-  font-size: 1em;
-  font-family: 'Montserrat', sans-serif;
-}
+  button {
+    padding: 0.5em 1em;
+    background: #0055a5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  }
 
-button {
-  padding: 0.5em 1em;
-  background: #0055a5;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-}
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Montserrat', sans-serif;
+    color: #a67c52;
+  }
 
-/* === FOOTER === */
-footer {
-  text-align: center;
-  margin-top: 40px;
-  font-family: 'Montserrat', sans-serif;
-  color: #a67c52;
-}
+  footer a {
+    color: #a67c52;
+    text-decoration: none;
+  }
 
-footer a {
-  color: #a67c52;
-  text-decoration: none;
-}
+  footer a:hover {
+    text-decoration: underline;
+  }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* === MODALS === */
-.modal.fade .modal-dialog {
+ .modal.fade .modal-dialog {
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
   transform: scale(0.95);
   opacity: 0;
@@ -227,12 +233,12 @@ footer a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100vh - 4rem); /* past binnen schermhoogte */
 }
 
 .modal-content {
   height: auto;
-  max-height: calc(100vh - 4rem);
+  max-height: calc(100vh - 4rem); /* voorkomt overflow */
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -240,8 +246,11 @@ footer a:hover {
   justify-content: space-between;
 }
 </style>
-
 </head>
+
+
+
+
 
 <body>
 
@@ -265,52 +274,111 @@ footer a:hover {
   </nav>
 
   <!-- Slideshow -->
-  <div class="container-fluid p-0 mb-5">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="images/travel.jpg" alt="Slide 1">
-          <div class="carousel-caption">
-            <h5>Welkom op ons blog</h5>
-            <p>Bekijk onze nieuwste verhalen en foto's</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/bon2.jpg" alt="Slide 2">
-          <div class="carousel-caption highlight-slide">
-    <h5>Reizen & Inspiratie</h5>
-    <p>Ontdek de wereld door mijn lens</p>
+  <div class="wie-container">
+  <img src="images/korea.jpg" alt="Teamfoto" class="wie-foto">
+  <div class="wie-tekstblok">
+    <p>Welkom op onze pagina! Hier vertellen we wie we zijn, wat ons drijft en waar we van dromen...</p>
   </div>
 </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/bon3.jpg" alt="Slide 3">
-           <div class="carousel-caption highlight-slide">
-    <h5>Persoonlijke verhalen</h5>
-    <p>Een kijkje in ons leven</p>
-  </div>
-</div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    </div>
-  </div>
+<style>
+
+ /* === WIE ZIJN WIJ === */
+
+/* Container */
+.wie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+/* Foto */
+.wie-foto {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #a67c52;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.wie-foto:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Tekstblok */
+.wie-tekstblok {
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff8dc;
+  padding: 1.5rem;
+  border: 4px solid #a67c52;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #5a4632;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+.wie-tekstblok:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Animatie */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+  </style>
 
   <!-- Blogbericht -->
   <div class="container mb-4">
     <div class="blog-editor">
-      <h5>📍 Thuis, 25 oktober 2025</h5>
-      <p>Hallo,<br>Onze geheel vernieuwde en aangepaste website is online.<br>Het heeft even geduurd maar het resultaat mag er zijn, vinden we.<br>De vorige website was gebouwd met het WYSIWYG  principe, deze site is gemaakt met HTML,CSS en JS.<br>Op deze pagina gaan in de toekomst onze reisverhalen verschijnen, in het blokje hieronder, waar nu nog testfoto`s staan gaan we, als het even kan, dagelijks nieuwe foto`s plaatsen.<br>Het verslag van ons verblijf op de "Westerdam" in 2020 is aangepast en er is en verwijzing naar een andere pagina (Nieuws) waar een paar video`s staan en enkele krantenberichten.<br>Op de pagina "Wereldreis Foto`s" zijn foto`s te zien die we gedurende de afgelopen 19 jaar hebben gemaakt, het is maar een greep uit de duizenden foto`s die we op onze reizen hebben gemaakt.<br>Op de pagina "Wie zijn wij?" vertellen we iets over onszelf en onze bezigheden.<br>Op de "Home" pagina kun je een reactie achterlaten, we zijn benieuwd wat je van de nieuwe site vindt.<br>Laat het ons vooral weten.<br>
-Tot een volgende reis!<br>
-Groeten,<br>
-Ingrid en Robert</p>
+      
+      <p>Wij zijn Ingrid en Robert, we wonen in de buurt van Den Haag.<br>
+
+Sinds 2006 zijn we samen.<br>
+      
+Toen we elkaar leerden kennen hebben we besloten zoveel als mogelijk is van de wereld te gaan zien.<br>
+
+
+En zo zijn we diverse keren op Bonaire geweest, we hebben daar veel gesnorkeld en gedoken.<br>
+      
+
+Met een gehuurde camper zijn we een paar maal door Canada en de USA getrokken.<br>
+
+We maken regelmatig een cruise, zo zijn we in Alaska geweest, in Zuidoost-Azië en de Middellandse Zee.<br>
+
+De laatste cruises zijn naar Noordwest-Europa geweest, en zo zijn we vorig jaar in Groenland geweest, een heel aparte belevenis!<br>
+
+In 2020 kon door de uitbraak van het corona virus een cruise naar Japan niet doorgaan.<br>
+
+Toen we, na vertrek uit Hongkong 6 dagen onderweg waren, werd de cruise gecanceld.<br>
+
+Het zou nog 2 weken duren voor we een haven vonden die ons wilde toelaten om vandaar uit naar huis te kunnen vliegen.<br>
+
+Eenzelfde cruise, met een iets afwijkende route, gaan we volgend jaar (2026) doen.<br>
+
+Sinds onze huwelijksreis gaan we jaarlijks naar  Sainte Maxime aan de Cote d`Azur.<br>
+
+De foto hierboven is gemaakt tijdens een Photoshoot in Seoul, we maakten daar een stopover tijdens onze reis naar Sydney.<br>
+
+Vanuit Sydney hebben we een cruise gemaakt die ons naar andere bestemmingen in Australië en Nieuw-Zeeland bracht.<br>
     </div>
   </div>
 
@@ -388,3 +456,4 @@ Ingrid en Robert</p>
 
 </body>
 </html>
+
