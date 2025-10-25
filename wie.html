@@ -20,49 +20,45 @@
 
   /* Navbar */
   .navbar {
-  background-color: #f5e9d4;
-  border-radius: 12px;
-  margin: 0 auto;
-  width: 95%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  border: 1px solid #c2a679;
+    background-color: #f5e9d4;
+    border-radius: 12px;
+    width: 95%;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border: 1px solid #c2a679;
+  }
 
-  
-}
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    font-family: 'Special Elite', serif;
+    color: #5a4632 !important;
+  }
 
-.navbar-brand {
-  font-family: 'Special Elite', serif;
-  font-size: 1.6em;
-  font-weight: bold;
-  color: #5a4632 !important;
-}
+  .navbar-brand {
+    font-size: 1.6em;
+    font-weight: bold;
+  }
 
-.navbar-nav .nav-item {
-  margin-right: 12px;
-}
+  .navbar-nav .nav-link {
+    font-size: 1.1em;
+    background-color: #f5e9d4;
+    border: 1px solid #c2a679;
+    border-radius: 20px;
+    padding: 6px 14px;
+    transition: all 0.3s ease;
+  }
 
-.navbar-nav .nav-link {
-  font-family: 'Special Elite', serif;
-  font-size: 1.1em;
-  color: #5a4632 !important;
-  background-color: #f5e9d4;
-  border: 1px solid #c2a679;
-  border-radius: 20px;
-  padding: 6px 14px;
-  transition: all 0.3s ease;
-}
+  .navbar-nav .nav-link:hover {
+    background-color: #e8dcc2;
+    color: #c2a679 !important;
+    text-decoration: none;
+  }
 
-.navbar-nav .nav-link:hover {
-  background-color: #e8dcc2;
-  color: #c2a679 !important;
-  text-decoration: none;
-}
-
-.navbar-nav .nav-item.active .nav-link {
-  color: #c2a679 !important;
-  font-weight: bold;
-  border-bottom: 2px solid #c2a679;
-}
+  .navbar-nav .nav-item.active .nav-link {
+    background-color: #e8dcc2;
+    border: 2px solid #c2a679;
+    font-weight: bold;
+  }
 
   /* Slideshow */
   .carousel-item {
@@ -281,18 +277,13 @@
   </div>
 </div>
 <style>
-
- /* === WIE ZIJN WIJ === */
-
-/* Container */
-.wie-container {
+  .wie-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 3rem 1rem;
 }
 
-/* Foto */
 .wie-foto {
   width: 500px;
   height: 500px;
@@ -301,18 +292,15 @@
   border: 4px solid #a67c52;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
+
   opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.3s;
 }
 
-.wie-foto:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-/* Tekstblok */
+
+
 .wie-tekstblok {
   max-width: 600px;
   width: 100%;
@@ -326,9 +314,15 @@
   line-height: 1.6;
   color: #5a4632;
   text-align: center;
+
   opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.6s;
+}
+.wie-foto:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .wie-tekstblok:hover {
@@ -336,15 +330,16 @@
   transition: box-shadow 0.3s ease;
 }
 
-/* Animatie */
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
- 
-  </style>
+
+
+</style>
 
   <!-- Blogbericht -->
   <div class="container mb-4">
