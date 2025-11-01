@@ -132,6 +132,41 @@
       color: #444;
       overflow: hidden;
     }
+    @media screen and (max-width: 768px) {
+  .media-blok {
+    flex-direction: column;
+    height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .media-thumb {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+  }
+
+  .media-tekst {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .media-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .media-header h2 {
+    font-size: 22px;
+  }
+
+  .media-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -196,7 +231,7 @@
 
 <div class="media-blok">
   <a href="jinekdek.jpg" target="_blank">  
-   <img src="jinekdek.jpg" alt="Interview thumbnail" class="media-thumb">
+   <img src="images/jinekdek.jpg" alt="Interview thumbnail" class="media-thumb">
   </a>
   
   <div class="media-tekst">
@@ -207,7 +242,7 @@
 
 <div class="media-blok">
   <a href="https://www.ad.nl/binnenland/schip-met-91-nederlanders-mag-niet-naar-japan-waar-gaan-we-heen~a9bdb51d/" target="_blank">
-    <img src="ad.jpg" alt="Interview thumbnail" class="media-thumb">
+    <img src="images/ad.jpg" alt="Interview thumbnail" class="media-thumb">
   </a>
   <div class="media-tekst">
     <h5>Schip met 91 Nederlanders mag niet naar Japan</h5>
