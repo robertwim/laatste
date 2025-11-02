@@ -230,6 +230,29 @@
   flex-direction: column;
   justify-content: space-between;
 }
+#berichten-container {
+  max-width: 600px;
+  margin: 2em auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bericht-blok {
+  background: #f0f0f0;
+  padding: 1em;
+  margin-bottom: 1em;
+  position: relative;
+  border-radius: 5px;
+}
+
+.verwijder-knop {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  color: red;
+  font-size: 1.2em;
+}
+
 </style>
 </head>
 
@@ -341,7 +364,7 @@ Ingrid en Robert<br>
       </div>
     </div>
   </div>
-
+ <div id="berichten-container"></div>
   <!-- Reactieformulier -->
   <form id="contact-form">
     <h5 style="text-align: center;">Laat een bericht achter</h5>
@@ -353,6 +376,8 @@ Ingrid en Robert<br>
   <!-- Footer -->
   <footer style="margin-top: 4em; padding: 2em 0; text-align: center; font-size: 0.9em; color: #666; border-top: 1px solid #ccc;">
     &copy; 2025 Robert Wim • <a href="mailto:info@robertwim.nl" style="color: #0055a5; text-decoration: none;">Contact</a>
+  
+  
   </footer>
 
   <!-- Scripts -->
@@ -363,19 +388,40 @@ Ingrid en Robert<br>
   document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const form = this; // Bewaar referentie naar het formulier
+    const form = this;
+    const naam = form.from_name.value;
+    const bericht = form.message.value;
 
     emailjs.sendForm("robertwim", "template_kg3q0np", form)
       .then(function() {
+        // Bericht tonen boven het formulier
+        voegBerichtToe(naam, bericht);
+
+        form.reset(); // Leegt het formulier
         alert("Bericht verzonden!");
-        form.reset(); // Leegt het formulier correct
       })
       .catch(function(err) {
         console.error("EmailJS fout:", err);
         alert("Er ging iets mis:\n" + JSON.stringify(err));
       });
   });
+
+  function voegBerichtToe(naam, bericht) {
+    const container = document.getElementById("berichten-container");
+
+    const blok = document.createElement("div");
+    blok.className = "bericht-blok";
+
+    blok.innerHTML = `
+      <strong>${naam}</strong><br>
+      <p>${bericht}</p>
+      <span class="verwijder-knop" onclick="this.parentElement.remove()">❌</span>
+    `;
+
+    container.prepend(blok); // Voeg bovenaan toe
+  }
 </script>
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
