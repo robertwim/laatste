@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Krant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonts & Bootstrap -->
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Playfair+Display&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f1b1;
+      margin: 20px;
+      padding-top: 16px;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background-color: #f5e9d4;
+      border-radius: 12px;
+      width: 95%;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid #c2a679;
+    }
+
+    .navbar-nav .nav-link {
+      font-family: 'Special Elite', serif;
+      font-size: 1.1em;
+      color: #5a4632 !important;
+      background-color: #f5e9d4;
+      border: 1px solid #c2a679;
+      border-radius: 20px;
+      padding: 6px 14px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: #e8dcc2;
+      color: #c2a679 !important;
+      text-decoration: none;
+    }
+
+    .navbar-nav .nav-item.active .nav-link {
+      color: #c2a679 !important;
+      font-weight: bold;
+      border-bottom: 2px solid #c2a679;
+    }
+
+    .navbar-nav .nav-item {
+      margin-right: 12px;
+    }
+
+    .navbar-brand {
+      font-family: 'Special Elite', serif;
+      font-size: 1.6em;
+      font-weight: bold;
+      color: #5a4632 !important;
+    }
+
+    /* Header with icons */
+    .media-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      border: 4px solid #1743e3;
+      background-color: #f0f0f0;
+      border-radius: 12px;
+    }
+
+    .media-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .media-header h1 {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      font-size: 28px;
+      color: #002147;
+    }
+
+    /* Media blokken */
+    .media-blok {
+      background-color: #fdfdfd;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      height: 180px;
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 900px;
+      border: 4px solid #1743e3;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .media-blok:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .media-thumb {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 4px solid #1743e3;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .media-thumb:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .media-tekst {
+      flex: 1;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 15px;
+      color: #444;
+      overflow: hidden;
+    }
+    @media screen and (max-width: 768px) {
+  .media-blok {
+    flex-direction: column;
+    height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .media-thumb {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+  }
+
+  .media-tekst {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .media-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .media-header h2 {
+    font-size: 22px;
+  }
+
+  .media-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-4" style="border-bottom:2px solid #c2a679; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+  <div class="container">
+    <a class="navbar-brand" href="#">On the road again!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="westerdam.html">Westerdam</a></li>
+          <li class="nav-item"><a class="nav-link" href="fotoblok.html">Wereldreis Foto`s</a></li>
+          <li class="nav-item"><a class="nav-link" href="krant.html">Nieuws!</a></li>
+          <li class="nav-item"><a class="nav-link" href="wie.html">Wie zijn wij?</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="media-header">
+  <img src="blad.jpg" alt="Krant" class="media-icon">
+  <h2>Kranten & Video’s</h2>
+  <img src="kamera.jpg" alt="Camera" class="media-icon">
+</header>
+<!-- Pages build geforceerd na opschoning -->
+<!-- Media blokken -->
+<div class="media-blok">
+  <a href="https://www.hartvannederland.nl/milieu-gezondheid/artikelen/passagiers-westerdam-boos-terugreis" target="_blank">
+    <img src="schiphol2.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  <div class="media-tekst">
+    <h5>Aankomst op Schiphol</h5>
+    <p>Hier is in een kort fragment te zien dat we na aankomst op Schiphol, terwijl we uren op onze bagage moeten wachten, worden geïnterviewd door "Hart van Nederland".</p>
+  </div>
+</div>
+
+<div class="media-blok">
+  <a href="https://www.youtube.com/watch?v=oDPtz1Pfd0M&t=14s" target="_blank">
+    <img src="videoframe.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  <div class="media-tekst">
+    <h5>Journaal van Mediacorp (Singapore)</h5>
+    <p>De Cambodjaanse autoriteiten gaan 20 passagiers van het cruiseschip Westerdam testen op COVID-19. Het schip ligt voor anker bij Sihanoukville nadat het werd geweigerd door Japan, Taiwan, Guam, de Filipijnen en Thailand.</p>
+  </div>
+</div>
+
+
+<div class="media-blok">
+  <a href="https://www.denhaagcentraal.net/nieuws/veilige-haven-voor-cruiseschip-haagse-passagiers-opgelucht/" target="_blank">
+    <img src="dhc.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  <div class="media-tekst">
+    <h5>Veilige haven voor cruiseschip, Haagse passagiers opgelucht</h5>
+    <p>Het leek een schitterende cruise te worden die Hagenaar Hans van Bemmelen en zijn partner Joan zouden gaan maken. Het coronavirus gooide roet in het eten. Cambodja biedt hun schip nu een veilige haven, zodat iedereen naar huis kan.</p>
+  </div>
+</div>
+
+<div class="media-blok">
+  <a href="jineknieuw.jpg" target="_blank">  
+   <img src="jineknieuw.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  
+  <div class="media-tekst">
+    <h5>Eva Jinek uitzending</h5>
+  <p>Toen we een paar dagen thuis waren werden we telefonisch benaderd met de vraag of we aanwezig wilden zijn bij de uitzending van Eva Jinek. We zijn daar geweest en hebben ons verhaal kunnen doen. De foto is door ons zelf genomen aan boord van de "Westerdam" en verstuurd naar de "Telegraaf". Daar is de foto in een krantenartikel verschenen.</p>
+  </div>
+</div>
+<!-- Laatste test voor thumbnail fix -->
+<div class="media-blok">
+  <a href="https://www.ad.nl/binnenland/schip-met-91-nederlanders-mag-niet-naar-japan-waar-gaan-we-heen~a9bdb51d/" target="_blank">
+    <img src="adnieuw.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  <div class="media-tekst">
+    <h5>Schip met 91 Nederlanders mag niet naar Japan</h5>
+    <p>Het cruiseschip De Westerdam, eigendom van de Holland-Amerika Lijn, dobbert doelloos voor de kust van Taiwan omdat het niet mag aanmeren in Japan vanwege het coronavirus. Aan boord zitten 91 Nederlanders.</p>
+  </div>
+</div>
+
+<!-- 🌅 Footer -->
+<footer class="site-footer mt-5">
+  <div class="container text-center py-4">
+    <p class="footer-text mb-1">© 2025 Robert’s Reisblog</p>
+    <p class="footer-subtext">Gemaakt met liefde, koffie en een camera 📷</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="index.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Wereldreis Galerij</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Fonts & Bootstrap -->
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Playfair+Display&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+
+<style>
+.navbar-nav .nav-item.active .nav-link {
+  color: #c2a679 !important; /* warme highlightkleur */
+  font-weight: bold;
+  border-bottom: 2px solid #c2a679;
+}
+.navbar-nav .nav-link {
+  font-family: 'Special Elite', serif;
+  font-size: 1.1em;
+  color: #5a4632 !important;
+}
+.navbar-brand {
+  font-family: 'Special Elite', serif;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #5a4632 !important;
+}
+.navbar-nav .nav-link:hover {
+  color: #c2a679 !important;
+  text-decoration: underline;
+}
+.navbar-nav .nav-item {
+  margin-right: 12px; /* ruimte tussen knoppen */
+}
+
+.navbar-nav .nav-link {
+  font-family: 'Special Elite', serif;
+  font-size: 1.1em;
+  color: #5a4632 !important;
+  background-color: #f5e9d4;
+  border: 1px solid #c2a679;
+  border-radius: 20px;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #e8dcc2;
+  color: #c2a679 !important;
+  text-decoration: none;
+}
+.navbar-nav .nav-item.active .nav-link {
+  color: #c2a679 !important;
+  font-weight: bold;
+  border-bottom: 2px solid #c2a679;
+}
+.navbar-nav .nav-item.active .nav-link {
+  color: #c2a679 !important;
+  font-weight: bold;
+  border-bottom: 2px solid #c2a679;
+}
+.navbar {
+  background-color: #f5e9d4; /* warme beige tint */
+  border-radius: 12px;
+  width: 95%;
+  margin: 0 auto 20px auto; /* centreren + ruimte onder */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid #c2a679;
+}
+body {
+  padding-top: 16px; /* of 16px voor iets meer ademruimte */
+  background-color: #e6d5bb;
+}
+.modal-content {
+  background-color: #fdfdfd;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.modal-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translateY(-20px);
+}
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+.img-thumbnail {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 240px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.img-thumbnail {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 3px solid #c2a679;
+  border-radius: 8px;
+}
+
+.img-thumbnail:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.modal-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: zoom-in;
+}
+
+.modal-body img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-4" style="border-bottom:2px solid #c2a679; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+  <div class="container">
+    <a class="navbar-brand" href="#" style="font-family:'Special Elite',serif; font-weight:bold; color:#5a4632;">On the road again!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+         <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="westerdam.html">Westerdam</a></li>
+          <li class="nav-item"><a class="nav-link" href="fotoblok.html">Wereldreis Foto`s</a></li>
+          <li class="nav-item"><a class="nav-link" href="krant.html">Nieuws!</a></li>
+          <li class="nav-item"><a class="nav-link" href="wie.html">Wie zijn wij?</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<div style="background-color:#e8dcc2; padding:20px; text-align:center; border-bottom:2px solid #c2a679; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+  <img src="kompas.jpeg" alt="Kompas" style="width:50px; height:50px; margin-bottom:10px;">
+  <h1 style="font-family:'Special Elite',serif; font-size:2.2em; color:#5a4632; text-transform:uppercase;">Wereldreis Galerij</h1>
+  <p style="font-style:italic; color:#7a6a58;">Een visuele ode aan avontuur</p>
+</div>
+
+<!--Eerste Galerij -->
+<div class="d-flex flex-wrap justify-content-center p-4" style="gap:20px;">
+  <!-- Herhaal voor elke foto -->
+  <div style="width:200px; text-align:center;">
+    <img src="egypte2007.jpg" alt="Foto 1" class="img-thumbnail" data-toggle="modal" data-target="#modal1" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;font-family:'Open Sans', sans-serif; color:#5a4632;">Voor het eerst samen op (duik)reis <br>Marsa Alam<br> Egypte 2007</div>
+  </div>
+  <div style="width:200px; text-align:center;">
+    <img src="hoian.jpg" alt="Foto 2" class="img-thumbnail" data-toggle="modal" data-target="#modal2" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;font-family:'Open Sans', sans-serif; color:#5a4632;">Strandwandeling tijdens de<br> "Far East"cruise<br>Vietnam 2016?</div>
+  </div>
+  <div style="width:200px; text-align:center;">
+    <img src="boot.jpg" alt="Foto 3" class="img-thumbnail" data-toggle="modal" data-target="#modal3" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;font-family:'Open Sans', sans-serif; color:#5a4632;">Zeeleeuwen safari op een koude dag <br> Oregon USA 2012</div>
+  </div>
+  <div style="width:200px; text-align:center;">
+    <img src="komodo2018.jpg" alt="Foto 4" class="img-thumbnail" data-toggle="modal" data-target="#modal4" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;font-family:'Open Sans', sans-serif; color:#5a4632;">Op het eiland Komodo<br>National  (Varanen) Park <br> Indonesia 2011</div>
+  </div> 
+  <div style="width:200px; text-align:center;">
+    <img src="bon20063.jpg" alt="Foto 5" class="img-thumbnail" data-toggle="modal" data-target="#modal5" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px;font-size:0.8em;;font-family:'Open Sans', sans-serif; color:#5a4632;">Het begin <br>Eerste foto op ons reisblog<br>Bonaire 2006</div>
+  </div>
+</div>
+<!--Tweede Galerij -->
+<div class="d-flex flex-wrap justify-content-center p-4" style="gap:20px;">
+  <!-- Herhaal voor elke foto -->
+  <div style="width:200px; text-align:center;">
+    <img src="bonaire2023.jpg" alt="Foto 1" class="img-thumbnail" data-toggle="modal" data-target="#modal6" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;font-family:'Open Sans', sans-serif; color:#5a4632;">Valentine`s Dinner<br>Delphins Beach<br>Bonaire 2023</div>
+  </div>
+  <div style="width:200px; text-align:center;">
+    <img src="bonaire2006.jpg" alt="Foto 2" class="img-thumbnail" data-toggle="modal" data-target="#modal7" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;;font-family:'Open Sans', sans-serif', cursive; color:#5a4632;">Hang Out Beach Bar<br>Paradijs in Sorobon<br>Bonaire 2006</div>
+  </div>
+  <div style="width:200px; text-align:center;">
+    <img src="tenerife2022.jpg" alt="Foto 3" class="img-thumbnail" data-toggle="modal" data-target="#modal8" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;;font-family:'Open Sans', sans-serif; color:#5a4632;">Relaxen op een terras in <br>Costa Adeje<br> Tenerife 2023</div>
+  </div>
+  <div style="width:200px; text-align:center;">
+    <img src="rendiersafari.jpg" alt="Foto 4" class="img-thumbnail" data-toggle="modal" data-target="#modal9" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;;font-family:'Open Sans', sans-serif; color:#5a4632;">Rendierfarm tijdens een<br>Scandinavië rondreis<br>Zweden 2022</div>
+  </div>
+  <div style="width:200px; text-align:center;">
+    <img src="noorwegencruise.jpg" alt="Foto 5" class="img-thumbnail" data-toggle="modal" data-target="#modal10" style="width:200px; height:140px; object-fit:cover; border:3px solid #c2a679; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); cursor:pointer;">
+    <div style="margin-top:8px; font-size:0.8em;;font-family:'Open Sans', sans-serif; color:#5a4632;">In een grot in Noorwegen<br>tijdens onze eerste cruise<br>Noorwegen 2009</div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="modal1" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="egypte2007.jpg" class="img-fluid" alt="Vergrote foto 1">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal2" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="hoian.jpg" class="img-fluid" alt="Vergrote foto 2">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal3" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="boot.jpg" class="img-fluid" alt="Vergrote foto 3">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal4" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="komodo2018.jpg" class="img-fluid" alt="Vergrote foto 4">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal5" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="bon20063.jpg" class="img-fluid" alt="Vergrote foto 5">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal6" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="bonaire2023.jpg" class="img-fluid" alt="Vergrote foto 1">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal7" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+   <img src="bonaire2006.jpg" class="img-fluid" alt="Vergrote foto 2">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal8" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="tenerife2022.jpg" class="img-fluid" alt="Vergrote foto 3">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal9" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="rendiersafari.jpg" class="img-fluid" alt="Vergrote foto 4">
+  </div></div></div>
+</div>
+<div class="modal fade" id="modal10" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">
+    <img src="noorwegencruise.jpeg" class="img-fluid" alt="Vergrote foto 5">
+  </div></div></div>
+</div>
+<!-- Footer -->
+<footer style="background-color:#e8dcc2; text-align:center; padding:15px; font-size:0.9em; color:#5a4632; border-top:2px solid #c2a679;">
+  Gemaakt met liefde voor reizen | © robertwim 2025
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

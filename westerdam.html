@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reis 2020 – On the road again!</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+
+
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+.navbar-nav .nav-link {
+  font-family: 'Special Elite', serif;
+  font-size: 1.1em;
+  color: #5a4632 !important;
+}
+body {
+  background-color: #fff8dc;
+  font-family: Georgia, serif;
+}
+
+p {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+/* Banner */
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.banner img {
+  max-width: 1000px;
+  width: 100%;
+  height: auto;
+  border: 5px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 20;
+  display: block;
+  margin: 0 auto;
+}
+
+.banner img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  border-color: #999;
+}
+
+/* Intro-box */
+.intro-box {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.intro-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Blog-editor */
+.blog-editor {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: #737373;
+  line-height: 1.6;
+}
+
+/* Gallery */
+.gallery-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 60px auto; /* ⬅️ gelijke marge boven en onder */
+}
+
+.gallery-item {
+  width: 190px;
+  text-align: center;
+}
+
+.thumbnail {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  color: #5c4033;
+  margin-top: 6px;
+}
+
+/* Modal image */
+#modalImage {
+  max-width: 120vw;
+  max-height: 120vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Footer */
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Buttons */
+button {
+  background-color: #0055aa;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003f7f;
+}
+
+/* Blog TOC */
+.blog-toc {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Georgia, serif;
+  display: none;
+}
+
+.blog-toc h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.blog-toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.blog-toc li {
+  margin-bottom: 6px;
+}
+
+.blog-toc a {
+  text-decoration: none;
+  color: #005f73;
+  font-weight: bold;
+}
+
+.blog-toc a:hover {
+  text-decoration: underline;
+  color: #0a9396;
+}
+
+/* Dancing text */
+.dancing-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+}
+ .navbar-nav .nav-item.active .nav-link {
+  color: #c2a679 !important; /* warme highlightkleur */
+  font-weight: bold;
+  border-bottom: 2px solid #c2a679;
+}
+.navbar-brand {
+  font-family: 'Special Elite', serif;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #5a4632 !important;
+}
+.navbar-nav .nav-link:hover {
+  color: #c2a679 !important;
+  text-decoration: underline;
+}
+.navbar-nav .nav-item {
+  margin-right: 12px; /* ruimte tussen knoppen */
+}
+
+.navbar-nav .nav-link {
+  font-family: 'Special Elite', serif;
+  font-size: 1.1em;
+  color: #5a4632 !important;
+  background-color: #f5e9d4;
+  border: 1px solid #c2a679;
+  border-radius: 20px;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #e8dcc2;
+  color: #c2a679 !important;
+  text-decoration: none;
+}
+.navbar-nav .nav-item.active .nav-link {
+  color: #c2a679 !important;
+  font-weight: bold;
+  border-bottom: 2px solid #c2a679;
+}
+.navbar-nav .nav-item.active .nav-link {
+  color: #c2a679 !important;
+  font-weight: bold;
+  border-bottom: 2px solid #c2a679;
+}
+.navbar {
+  background-color: #f5e9d4; /* warme beige tint */
+  border-radius: 12px;
+  margin: 0 auto;
+  width: 95%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid #c2a679;
+}
+body {
+  padding-top: 16px; /* of 16px voor iets meer ademruimte */
+}
+</style>
+</head>
+<body class="container py-4">
+
+ 
+  <!-- Navigatie -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-4" style="border-bottom:2px solid #c2a679; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+  <div class="container">
+    <a class="navbar-brand" href="#" style="font-family:'Special Elite',serif; font-weight:bold; color:#5a4632;">On the road again!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="westerdam.html">Westerdam</a></li>
+          <li class="nav-item"><a class="nav-link" href="fotoblok.html">Wereldreis Foto`s</a></li>
+          <li class="nav-item"><a class="nav-link" href="krant.html">Nieuws!</a></li>
+          <li class="nav-item"><a class="nav-link" href="wie.html">Wie zijn wij?</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  
+<div class="banner">
+  <img src="cambodja.jpg" alt="Westerdam">
+  <button class="banner-caption">Westerdam in Sihanoukville (Cambodja)</button>
+</div>
+<style>
+.banner {
+  position: relative;
+}
+
+.banner-caption {
+  position: absolute;
+  bottom: 10px; /* Lager geplaatst */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 85, 170, 0.8);
+  color: white;
+  padding: 6px 16px; /* Kleiner gemaakt */
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 30;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* voorkomt afbreken */
+}
+.banner-caption:hover {
+  background-color: rgba(0, 63, 127, 0.9);
+}
+</style>
+<div class="intro-box">
+  <p>
+    In februari 2020 waren we aan boord van de Westerdam<br>
+    toen de corona epidemie uitbrak.<br>
+    Het werd een "onvergetelijke" reis...
+  </p>
+  <p><strong>Hieronder kun je er alles over lezen</strong></p>
+</div>
+
+  <!-- Dagverslag -->
+    <!-- 📝 Dagboek:begin januari 2020 -->
+  <div class="blog-editor">
+    <h5 id="jan22"><strong>📍 Thuis, 22 januari 2020</strong></h5>
+
+    <p>Op 30 januari is het zover, dan vliegen we per KLM, non stop, naar Hongkong. We komen daar op 31 januari aan, er is voor een nacht een hotel gereserveerd. We laten ons op 1 februari naar de Kai Tak Cruise Terminal vervoeren. Daar hopen we de &uml;Westerdam&uml; aan te treffen het, schip van de Holland America Line waarop we al meerdere keren te gast zijn geweest.</p>
+<p>Zo hebben we &nbsp;in 2016 een cruise naar/in Alaska gemaakt en in 2017 een cruise in de Middellandse Zee.</p>
+<p>In de avond van de eerste februari gaan de trossen los en begint een reis die 4 weken zal gaan duren. Tijdens deze 4 weken doe we de volgende landen aan:China, Filipijnen, Japan, Taiwan en Zuid-Korea.</p>
+<p>In totaal doen we 17 plaatsen aan in de verschillende landen. We gaan proberen in alle plaatsen een excursie te doen. In Sjanghai en Beijing zijn we in het verleden al eens geweest en hebben we al de hoogtepunten van de steden kunnen zien. Maar wie weet is er nog iets te boeken als we ter plaatse zijn.</p>
+<p>De cruise eindigt op 29 februari in Sjanghai. Ook daar blijven we een nacht omdat we net te laat arriveren om op die dag nog naar huis te vliegen.</p>
+<p>In eerste instantie hadden we een 2 weekse cruise in optie staan. Maar toen we de route nog eens bestudeerden vonden dat we wel heel weinig plaatsen in Japan zouden aandoen. En waar het ons om ging is zoveel mogelijk van Japan te zien. De cruise die aansluitend was aan de cruise die in optie stond deed meerdere plaatsen in Japan aan. Dus moesten we de keuze maken, of de cruise boeken die meer plaatsen aandoet in Japan, of beide cruises boeken en op die manier alles wat mogelijk is te zien krijgen van Japan. We hebben voor de laatste mogelijkheid gekozen en blijven dus 4 weken aan boord.</p>
+<p>Er zijn intussen een paar wijzigingen in de route aangebracht, zo zouden we in Keelung (Taiwan) een dag blijven, dat is nu veranderd in 2 dagen. Een dag in de haven van Qingdao (China) is veranderd in een dag op zee. We blijven een nacht langer in Beijing.</p>
+<p>Een dag nadat we een excursie hadden geboekt in Naha (Japan) zagen we op het journaal dat in die stad een eeuwenoud kasteel door brand was verwoest. En ja, u raadt het al, de excursie ging juist naar dat kasteel. Na het uitwisselen van enige E-mails hebben we de vooruitbetaalde kosten voor de excursie teruggestort gekregen. Enkele dagen geleden hebben we kunnen vernemen dat er in de buurt van Manilla een vulkaan is uitgebarsten. Manilla is de eerste haven die we aandoen op 3 februari. We hebben daar een city tour geboekt. Hopelijk hebben we dan geen last meer van de onrustige vulkaan. We gaan er van uit dat de tour gecanceld gaat worden als de weersomstandigheden te slecht zijn om de tour te doen.</p>
+<p>We zijn druk met het voorbereiden van de reis, natuurlijk zijn de cruise en de vluchten geboekt. Ook de hotels voor en na de cruise zijn besproken.</p>
+<p>Alleen voor China hebben we een visum nodig, het aanvragen daarvan heeft ons vele hoofdbrekens opgeleverd. Online konden we een vragenlijst invullen, in deze lijst werden de meest onmogelijk vragen gesteld. Zo moesten de werkgevers inclusief contactpersoon en telefoonnummers worden opgegeven. Ook was men ge&iuml;nteresseerd in de genoten opleiding en het saldo van de bankrekening. Na het beantwoorden van, naar onze mening, nog meer niet ter zake doende vragen was de vragenlijst dan eindelijk klaar. We hebben een afspraak gemaakt bij het Chinese Visa Application Service Center in Den Haag om daar de papieren, pasfoto`s, paspoorten e.d. in te leveren. E.e.a. had ook per post kunnen geschieden, maar Ingrid moest er sowieso heen om haar vingerafdrukken te laten nemen. Ik ben daarvan vrijgesteld omdat het nemen van vinger afdrukken alleen noodzakelijk is voor personen jonger dan 70 jaar. En zo heeft ouder zijn dus ook voordelen. Intussen zijn we al zover dat we de spullen hebben ingeleverd.</p>
+<p>Het nemen van de vingerafdrukken van Ingrid was nog een heel gedoe, de vingers moesten op een apparaatje met een glazen plaatje worden gelegd, de vinger afdrukken zouden dan op een beeldscherm te zien moeten zijn. Maar dat wilde maar niet lukken. Na talloze pogingen ging een medewerker er zich mee bemoeien door op Ingrid haar hand te gaan leunen, na talloze pogingen had ook dat geen effect. Of het nemen van de vingerafdrukken uiteindelijk gelukt is zullen we nooit weten, maar we hebben intussen wel de visa in huis.</p>
+<p>En nu moeten we alleen nog maar de dagen voor vertrek aftellen en de koffers te pakken.    </p>
+
+    
+    
+
+    <hr style="border-top: 2px dotted #ccc; margin-top: 30px;" />
+  </div>
+   <!-- 📝 Dagboek:28 januari 2020 -->
+<div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="jan28"><strong>📍 Thuis,28 januari</strong></h5>
+
+  <p>We hebben een mail ontvangen van Holland America Line.</p>
+<p>Wat we al hadden verwacht gaat ook gebeuren; het coronavirus gaat roet in het eten gooien.</p>
+<p>De eerste Chinese stad, Shanghai, die we zouden aandoen op 15 februari is uit het vaarschema verwijderd. De mensen die in die stad hun cruise zouden eindigen gaan, zoals nu de planning is, in Yokohama van boord.</p>
+<p>Voor ons heeft dat als gevolg dat we de excursie die we in Shanghai hebben geboekt moeten annuleren. Dit proces is inmiddels in gang gezet.</p>
+<p>Verder was te lezen in de mail van HAL dat er voor wat betreft de aankomst op Hongkong airport en het aan boord gaan van de Westerdam niet te veel problemen worden verwacht.</p>
+<p>Ongeveer 10 jaar geleden was er een uitbraak van de Mexicaanse griep. We vlogen toen naar Shanghai om vanuit daar een rondreis door China te beginnen.</p>
+<p>Voordat we arriveerden in Shanghai kregen we van de gezagvoerder te horen dat we niet direct van boord konden maar dat er eerst personen aan boord zouden komen om van elke passagier de temperatuur te nemen.</p>
+<p>En aldus geschiedde, er kwamen een paar personen aan boord uitgedost als astronauten Het nemen van de temperatuur duurde nog geen kwartier, daarna mocht iedereen het vliegtuig verlaten. We verwachten dat de aankomst in Hongkong nu ook dergelijke beelden gaat opleveren.</p>
+<p>Er is vanmorgen telefonisch contact geweest met HAL, ik heb gevraagd een herziene route te mailen. We zijn wel benieuwd of ook Beijing en Dalian gemeden gaan worden. We hebben nog geen reactie ontvangen.</p>
+<p>Een poging om een excursie te boeken in Yokohama is ook op niets uitgelopen, de website moet daarvoor eerst worden aangepast, en dat kan nog wel even op zich laten wachten. We kregen het advies de boeking aan boord te doen.</p>
+<p>Tot zover deze berichtgeving, mochten er redenen zijn om u verder in te lichten, dan zullen we dat zeker niet nalaten</p> </div>
+    
+
+ <!-- 📝 Dagboek:30 januari 2020 -->
+<div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="jan30"><strong>📍 Thuis, 30 januari</strong></h5>
+
+<p>Gisteren kregen we een telefoontje van het reisbureau.</p>
+<p>De mededeling was kort en bondig; alle bestemmingen van de cruise in China zijn geschrapt.</p>
+<p>De vaarroute blijft de eerste 2 weken ongewijzigd, behalve dan dat we op 15 februari in Yokohama aankomen in plaats van Shanghai.</p>
+<p>Daarna gaan we zeven plaatsen in Japan aandoen, in de oorspronkelijke route waren er acht zeedagen, dit is nu terug gebracht naar zes dagen.</p>
+<p>We hebben deze cruise geboekt omdat we vooral ge&iuml;nteresseerd waren in bestemmingen in Japan.</p>
+<p>In Shanghai en Beijing zijn we al eerder geweest.</p>
+<p>En zo heeft elk nadeel ook z`n voordeel.</p>
+<p>De terugvlucht is geboekt, we vliegen van uit Tokyo.</p>
+<p>Hotel is omgeboekt en de transfer in Tokyo is ook geregeld, kortom, we zijn er klaar voor.</p>
+<p>We worden vanmiddag opgehaald voor de rit naar Schiphol. De vlucht naar Honkong vertrekt om 17.40 uur.</p>
+<p>Een volgend bericht komt dus uit Hongkong.</p></div>
+
+
+ <!-- 📝 Dagboek: 31 januari 2020 -->
+<div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="jan31"><strong>📍 Hongkong, 31 januari 2020</strong></h5>
+
+<p>We zijn donderdag met ca. 10 minuten vertraging vertrokken van Schiphol. We waren snel door alle soorten van controles heen en ook het instappen verliep redelijk snel. Het toestel zat niet heel vol, dat zal ook te maken hebben met het coronagevaar. De aankomst in Hongkong vond plaats enkele minuten voor de geplande tijd. Bij de paspoortcontrole was een schrijven opgehangen waarin de vraag werd gesteld of we misschien de laatste tijd nog in Wuhan waren geweest. Voor alle zekerheid werd de vraag ook nog eens gesteld door de dienstdoende ambtenaar. Hij bleek tevreden met ons antwoord en we mochten onze weg vervolgen. Aan boord hadden we al een vragenlijst ingevuld met daarin ook de vraag of we in Huwan waren geweest en of we ons niet ziek voelden. Tijdens het inleveren van bovengenoemd document werd op afstand en passant onze temperatuur genomen.</p>
+<p>&nbsp;</p>
+<p>Eindelijk was het moment daar dat we ons naar Hal 1, balie B1 konden begeven, want daar zouden we de chauffeur ontmoeten die ons naar het Travelodge hotel in de stad zou brengen. Bij de balie aangekomen werden we vriendelijk welkom geheten door de aanwezigen, maar niet door onze chauffeur, die stond gewoon buiten op ons te wachten zo bleek na een verhelderend gesprek. Zo&rsquo;n gesprek voeren valt tegenwoordig ook niet mee, als beide gesprekspartners een mondkapje dragen. Wij als onervaren toeristen hebben nog de extra handicap dat als je iets in een email wilt laten lezen door het dragen van dat kapje je bril beslaat en je plotseling in een mistige wereld bent beland. En wat moet je dan doen? Je bril afzetten of het kapje afdoen? We zijn er nog niet uit. Ook bij het inchecken van het hotel werd onze temperatuur genomen. Maar toen konden we dan eindelijk op een comfortabel bed ploffen. We hebben er enkele uren doorgebracht.</p>
+<p>Lang geleden hadden we kaartjes gereserveerd voor het bijwonen van een Chinese Opera voorstelling. Dus op naar het Sunbeam Theater&hellip;. Daar aangekomen mochten we vernemen dat de voorstelling gecanceld was. Zonder opgaaf van redenen kregen we ons geld terug. Natuurlijk hadden we kunnen verwachten dat i.v.m. het virus dergelijke evenementen worden afgelast. Maar misschien was het ook wel zo elegant geweest om even een mailtje te sturen.</p></div>
+
+
+ <!-- 📝 Dagboek: 1 februari 2020 -->
+<div class="blog-editor" style="margin-top: 40px;">
+<h5 id="feb1"><strong>📍 At Sea, 1 februari 2020</strong></h5>
+
+<p>Eindelijk, We varen!<br />Maar voor het zover was hadden we vandaag nogal wat te doorstaan. Het begon er mee dat we door de jetlag vanmorgen na 5 uur de slaap niet meer konden vatten. Na een korte taxirit werden we rond 11 uur bij de Kai Tak Terminal afgezet. De Westerdam lag op ons te wachten. Het inchecken zou pas om 1 uur beginnen maar een uur eerder konden eerste passagiers zich al naar de balie begeven. Niet veel later waren wij aan de beurt, nadat de gegevens waren gecheckt kreeg ik een zoveelste Health Declaration Form uitgereikt. Omdat ik door het dragen van een mondkapje en een leesbril weer geen hand voor ogen zag wilde de dame achter de balie wel behulpzaam zijn. Zij gaf het advies om alle gestelde vragen met &ldquo;nee&rdquo; aan te vinken. En als ik dan ook nog even bij het kruisje m&rsquo;n handtekening wilde plaatsen zou alles goed komen. Aldus geschiedde en konden we ongehinderd en met een zuiver geweten de gangway betreden. We waren nog net op tijd om van een welverdiende, heerlijke lunch te genieten. Daarna op zoek naar het explorations caf&eacute;, de plaats waar de excursie worden verkocht. De excursies die we voor het 2de deel van onze reis al geboekt hadden zijn, omdat we China niet gaan aandoen, gecanceld. Maar we willen wel veel van Japan gaan zien, dus moeten we opnieuw boeken. Er bleek maar &eacute;&eacute;n excursie boekbaar, de rest van de reis moet nog &ldquo;op de rails worden gezet&rdquo;. We worden op de hoogte gehouden. In de reispapieren die we hadden ontvangen konden we lezen dat we voor wat betreft het diner een &ldquo;open seating&rdquo; hebben. Dat betekent dat je elke avond aan een ander tafeltje zit en elke avond een andere steward je bestelling komt opnemen. We hebben in het verleden altijd een vaste tafel en een vast tijdstip gehad en vinden dat wel zo plezierig. Het heeft even geduurd voor iedereen van de noodzaak doordrongen was, maar we zitten nu elke avond vanaf half zes aan tafel 2.<br />Vanavond hebben we naar klassieke muziek geluisterd en hebben we een presentatie gezien die ging over 150 jaar Holland America Line.<br />Het was een heel informatieve en interessante voorstelling.</p></div>
+ <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="1-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        <div class="caption">Incheckbalie Hongkong</div>
+      </div>
+      <div class="gallery-item">
+        <img src="1-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        <div class="caption">Wachtruimte Honhkong</div>
+        </div>
+         <div class="gallery-item">
+        <img src="1-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        <div class="caption">Travellodge hotel</div>
+        </div>
+         <div class="gallery-item">
+        <img src="kaitak.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        <div class="caption">Kai Tak terminal</div>
+        </div>
+
+</div>
+<!-- 📝 Dagboek: 2 februari 2020 -->
+<div class="blog-editor">
+  <h5 id="feb2"><strong>📍 At Sea, 2 februari 2020</strong></h5>
+
+  <p>Vandaag was een zeedag, We hebben dus de dag in de laagste versnelling doorgebracht.</p>
+<p>Lekker ontbeten in de dining room, en een presentatie bijgewoond over Manilla. De dag waar we geacht worden morgen te arriveren.<br />Maar dat zou geheel anders uitpakken.<br />Tijdens het (gala)diner werd plotseling de muziek onderbroken en schalde de stem van de gezagvoerder over alle beschikbare luidsprekers. Er zou een belangrijke mededeling volgen.<br />Die mededeling luidde ongeveer als volgt: de president van de Filippijnen heeft vanaf nu alle schepen en vliegtuigen komende uit China de toegang tot de Filippijnen ontzegt. En toen was het even stil in het restaurant.<br />Dit houdt dus in dat we morgen niet wakker worden in Manilla, maar waarschijnlijk onderweg zijn naar een nog nader de bepalen haven in Taiwan. Nadere berichten volgen.<br />De excursie in Manilla hebben we dus ook voor niets geboekt evenals de excursies die we zouden gaan doen in China.<br />Het begint nu toch wel enigszins vervelend te worden, steeds die wijzigingen en frustraties die het met zich meebrengt. We hebben er alle vertrouwen in dat de rederij z&rsquo;n best doet om alles op een adequate manier op te lossen.<br />Een groot gedeelte van de bemanning is van Filipijnse origine, zij zouden na vele maanden hun familie aan boord ontvangen.<br />Voor die mensen moet het ook als een klap aankomen om een dergelijke mededeling op het allerlaatste moment te krijgen.</p></div> 
+  
+ <!-- 📝 Dagboek: 3 februari 2020 -->
+<div class="blog-editor" style="margin-top: 40px;">
+  <h5 id="feb3"><strong>📍 At Sea, 3 februari 2020</strong></h5>
+
+  <p>We hebben vandaag vernomen dat we onderweg zijn naar Hualien (Taiwan). Vanmorgen hadden we nog geen idee wat we daar zouden gaan doen en of er wel iets te doen is. Die vraag werd snel beantwoord toen we toevallig op de website van de Westerdam keken. Dat is de enige website die we gratis kunnen raadplegen. Op deze site kunnen we de hoogtepunten van het wereldnieuws lezen, het menu van de dag zien en excursies boeken etc,<br />Daar was het dat we zagen dat er een excursie werd aangeboden in Hualien.<br />We hebben terstond die excursie geboekt.<br />Na alle doorstane emoties en ontberingen willen we wel eens vaste grond onder de voeten voelen&hellip;&hellip;..<br />Inmiddels zijn we een paar uur verder, tijdens een lezing die ging over de gebruiken en de tradities van Dim sum schalde de stem van de kapitein weer door de speakers.<br />We wisten dat zoiets niet veel goeds voorspelde. En dat bleek ook al snel.<br />We waren weer te vroeg geweest met het boeken van excursie voor morgen in Hualien.<br />Want in deze stad zijn we ook niet welkom, vreemd genoeg in een andere stad in Taiwan wel want we gaan nu naar Kaohsiung.<br />Volgens de laatste berichten gaan we daar 2 dagen blijven. Het lijkt ons echter verstandiger, gezien de ervaringen van de laatste dagen, maar &eacute;&eacute;n dag vooruit te denken.</p></div>
+  
+   <!-- 📝 Dagboek: 4 februari 2020 -->
+<div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb4"><strong>📍 At Sea, 4 februari 2020</strong></h5>
+
+<p>We hadden gisteren te horen gekregen dat we in BB King Blues club volgnummertjes konden halen om door de health check en paspoortcontrole te komen. Zo wilde men kennelijk voorkomen dat iedereen tegelijk aan de wal zou gaan. Men was echter vergeten te zeggen hoe laat e.e.a. zou gaan plaatsvinden. En dus stonden we om 06.30 uur in de club waar we te horen kregen dat vanaf 06.50 uur gestart zou worden. En zo hadden we als een van eersten onze kaartjes en stonden na het nemen van vingerafdrukken en temperatuur op straat voor de cruiseterminal. We hebben nog gezocht naar een persoon die er zou moeten zijn en waar we eventueel een tour konden boeken. We hebben de man niet gezien. Wel werden we al snel omringd door een aantal taxichauffeurs die ons hun diensten aanboden. E&eacute;n van hen sprak redelijk Engels, alles wat we met hem bespraken werd daarna voor de overige aanwezigen omgezet in het Chinees/Taiwanees. En zo duurde het geruime tijd voor we met &eacute;&eacute;n van de heren tot overeenstemming kwamen. Hij had een briefje bij zich waarop de bezienswaardigheid van de stad zowel in het Engels als in het Chinees vermeld waren. En zo konden we door aan te wijzen onze wensen kenbaar maken.<br />En zo hebben we het Fo Guang Shan complex bezocht. Een plek op een uur rijden van de stad. Dat uur heeft de chauffeur kunnen inkorten door op plaatsen waar hij 100 km. per uur mocht rijden de 140 aan te tikken.<br />Hoogtepunt in het complex was het Boeddha Museum. Een werkelijk prachtig museum, we zagen veel beelden en afbeeldingen van jade.<br />En natuurlijk was er een gigantische &ldquo;gouden&rdquo; Boeddha.<br />Het gehele gebouw straalt een weldadige rust uit. We werden er te woord gestaan door de in het nabijgelegen klooster wonende monniken.<br />De volgende stop zou een boulevard zijn waar we koffie zouden gaan drinken. We hadden verwacht een boulevard met zeezicht aan te treffen, dus was de teleurstelling groot toen de boulevard een enorme brede en vooral drukke straat bleek te zijn waar zich een Starbucks bevond. De koffie smaakte best.<br />Volgende stop: een tempelcomplex gewijd aan een oorlogsheld, ook hier weer een allesoverheersende rust en stilte.<br />Tot slot bezochten we nog het voormalig Britse consulaat dat tot museum is getransformeerd.<br />Ofschoon er door de taalbarri&egrave;re niet veel contact mogelijk was met de chauffeur heeft hij zijn best gedaan ons een mooie dag te bezorgen en dat is ten volle gelukt.</p></div>
+<div class="gallery-row">
+      <div class="gallery-item">
+        <img src="4-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+      </div>
+      <div class="gallery-item">
+        <img src="4-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="4-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+      <div class="gallery-item">
+        <img src="4-4.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      </div>
+      </div>
+      <div class="dancing-text">
+  Citytour in Hualien, Taiwan
+</div>
+
+ <!-- 📝 Dagboek: 5 februari 2020 -->
+<div class="blog-editor">
+<h5 id="feb5"><strong>📍 At Sea, 5 februari 2020</strong></h5>
+
+<p>Vanmorgen ging om 6 uur de wekker af, We moesten om 07.30 verzamelen voor een excursie die we geboekt hadden. Toen we op de grond een A4tje zagen liggen dat onder de deur was geschoven wisten we dat dit niet veel goeds te betekenen had. Niet urgente post komt in het brievenbus dat buiten naast de deur hangt. En inderdaad, wederom rampspoed. Gisteren lag er nog een cruiseschip aan dezelfde pier als de Westerdam. De meeste passagiers waren Chinezen, bij &eacute;&eacute;n van hen was het corona virus vastgesteld. Om die reden had men besloten geen passagiers en crew aan de wal toe te laten, dus ook de excursie was gecanceld.<br />Om 7 uur werden we mondeling door de gezagvoerder bijgepraat. We kregen niet meer te horen dan dat op een later tijdstip de vervolgroute zou worden bekend gemaakt.<br />Maar ook Taipei gaan we niet aan doen, de restrictie geldt voor alle Taiwanese havens.<br />Wat later in de ochtend kwam het bericht dat we naar Ishigaki (Japan) gaan. We komen daar overmorgen aan. We konden echter nog niet vertrekken omdat men nog machinekamerslops (water en olie afval) aan het overladen was.<br />Uiteindelijk zijn om ca.16.00 uur vertrokken.<br />Er stond een windkracht 6 met uitschieters naar 7 dus er werd driftig gebruik gemaakt van de railings in de smalle gangen.<br />`s Avonds was er een goede show van een Chinese illusionist.</p></div>
+
+ <!-- 📝 Dagboek: 6 februari 2020 -->
+<div class="blog-editor" style="margin-top: 40px;">
+<h5 id="feb6"><strong>📍 At Sea, 6 februari 2020</strong></h5>
+
+<p>Vanmorgen lag er een brief van kapitein Vincent Smit in ons postvak.<br />We konden zien wat de route is zoals die nu gepland is. Morgen komen we aan in Ishigaki, Daar blijven we tot in de late middag. Dan gaan we naar Naha (ook Japan). Hier blijven we 2 dagen.<br />Verder was te vernemen dat de passagiers die direct via HAL hebben geboekt, als ze dat willen, in Tokyo van boord kunnen op 15 februari. De vlucht wordt dan zonder kosten omgeboekt en men krijgt een vergoeding voor de niet genoten cruisedagen.<br />Omdat wij niet via HAL hebben geboekt maar via een reisbureau waar we in de afgelopen jaren meerdere cruises hebben geboekt geldt dit niet voor ons. Ik heb echter wel een mail gestuurd naar dat reisbureau met de vraag wat het voor ons betekend als we op de 15de in Tokyo van boord stappen. Want mocht het zo zijn dat we morgen ook weer worden geweigerd dan voelen we er toch veel voor om maar naar huis te gaan. We moeten elke dag afwachten wat de dag ons brengen gaat. We worden aan boord goed verzorgt, daarover geen klachten, maar we zouden wel eens wat meer zekerheid willen hebben en aan de wal kunnen gaan. Om het leed enigszins te verzachten en mensen in de gelegenheid te stellen de nodige e-mails te versturen heeft iedereen 2 uur gratis internet gekregen. Ik heb dat kunnen uitbreiden naar 2 x 2 uur. Vandaar dat dit bericht vanaf het schip is verzonden. Als extra pleister op de wonde is er vanmiddag een happy hour bij alle bars, met dien verstande dat het niet alleen happy is maar ook geheel gratis. Ik zal eens zien of ik me uurtje kan vrijmaken.</p></div>
+<div class="gallery-row">
+      <div class="gallery-item">
+        <img src="6-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+      </div>
+      <div class="gallery-item">
+        <img src="6-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="6-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+       
+        </div>
+      <div class="gallery-item">
+        <img src="6-4.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+      </div>
+      
+      </div>
+    
+</div>
+
+  <!-- 📝 Dagboek:  7 februari 2020 -->
+<div class="blog-editor">
+  <h5 id="feb7"><strong>📍 At Sea, 7 februari 2020</strong></h5>
+
+  <p>Gisterenavond stopte tijdens het diner de muziek weer. En dat bleek wederom geen goed teken te zijn. De haven waar we vanmorgen hadden moeten afmeren kan ons niet ontvangen omdat er niet voldoende medisch onderlegd personeel is om ons op de aanwezigheid van het corona virus te controleren.<br />Dus zou de volgende bestemming Naha (Japan) moeten zijn.<br />Maar &hellip;&hellip;.vanmorgen rond 7 uur werden we via de luidsprekers gewekt door de inmiddels bekende stem van onze kapitein, de brenger van slecht nieuws.<br /><span style="color: #613213;">De medede</span>ling was kort en hevig: Ook de haven van Naha wil ons niet ontvangen. Zo ook andere Japanse havens die we zouden aandoen. En dus&hellip;&hellip;.<strong>wordt de cruise gecanceld</strong>, niet alleen voor diegenen die op 15 februari van boord zouden gaan, maar voor diegenen die tot 29 februari zouden blijven. Wij dus. Op een later tijdstip krijgen we te horen waar we heen gaan en waar we van boord kunnen om maar huis te vliegen.<br />Tijdens het ontbijt was het merkbaar dat het schip geen rechte koers meer voer maar een minimale bocht aan het varen was.<br />Wat later toen we op een beeldscherm keken waar alle wetenswaardigheden over schip, koers, weer etc. te zien zijn zagen we dat de noordelijke koers was veranderd in een koers zuid zuid west.<br />Er begon een geanimeerde conversatie met medepassagiers, er werd gegist naar waar het schip onderweg zou kunnen zijn, de meeste stemmers dachten dat het Guam zou kunnen zijn, een eiland waar we zouden kunnen aankomen als we deze koers aanhouden. Het eiland is deel van de Hawa&iuml; eilanden en is Amerikaans grondgebied. Bovendien is er een militaire basis met een vliegveld. Het zou ongeveer 4 dagen varen zijn naar Guam. Voor het moment kunnen we alleen maar afwachten, er zijn onderhandelingen gaande met de US en Nederlandse autoriteiten.<br />Inmiddels is het avond geworden en hebben we een update mogen ontvangen.<br />De koers is gewijzigd, We varen nu een ZW-koers. Guam is dus niet langer een optie, het zou nu b.v. Singapore of Bangkok kunnen worden, al weet ik niet zeker of Singapore de grenzen al dan niet gesloten heeft.<br />Het is niet te hopen dat men gaat rekenen met 14 dagen incubatietijd want dan zitten we hier nog een week. En als er gerekend zou gaan worden vanaf de laatste haven die we hebben aangedaan nog langer.<br />We kregen de verzekering dat er nog voldoende brandstof aan boord is. En wat ook heel belangrijk is: er is voor de komende dagen voldoende voedsel en drank aan boord.<br />Dat kwam tot uiting toen we vanavond voor het diner een glas Kir Royale kregen aangeboden.</p></div>
+   <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="7-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+      </div>
+      <div class="gallery-item">
+        <img src="7-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="7-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+      <div class="gallery-item">
+        <img src="8-4.jpg" class="thumbnail" onclick="openModal(this.src)" />
+       
+      </div>
+      
+    </div>
+  
+
+ <!-- 📝 Dagboek: 8 februari 2020 -->
+<div class="blog-editor">
+  <h5 id="feb8"><strong>📍 At Sea, 8 februari 2020</strong></h5>
+
+  <p>Vanmorgen om 9 uur kregen we de reeds gisteren aangekondigde update.<br>De update bestond er uit dat er niets nieuws te melden was, men is nog in onderhandeling.<br />Om 12 uur kregen we het bericht dat er geen verandering was, maar dat er binnen 2 uur misschien iets te melden was.<br />En zo geschiedde, om 2 uur werd ons vriendelijk doch dringend verzocht het paspoort in te leveren, daarbij kregen we een formulier uitgereikt dat we moesten invullen.<br />De belangrijkste vraag in die lijst was: Bent u de laatste 2 weken in China geweest?<br />Als alle paspoorten zijn gescreend worden de uitkomsten doorgespeeld naar het land dat ons misschien gaat ontvangen. Welk land dit is werd nog niet bekend gemaakt.<br />Wel werd duidelijk dat we er niet voor volgende week aankomen.</p></div> 
+ 
+  
+ <!-- 📝 Dagboek: 9 februari 2020 -->
+<<div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb9"><strong>📍 At Sea, 9 februari 2020</strong></h5>
+
+  <p>Vanmorgen werden we om 06.15 uur wakker.<br />Dit was mede te danken aan het feit dat vannacht de klok een uur was terug gezet.<br />Omdat we toch wakker waren besloten we om 7 uur te gaan meedoen aan de &ldquo;sunrise stretch&rdquo; in het fitness center op dek 9. Het bleek een mix te zijn van gymnastiek en yoga.<br />Aansluitend aan deze les was er een yogaklas. Omdat we al ruim een week niets aan yoga hadden gedaan besloten we te blijven liggen op de matjes en de volgende les ook te volgen. Het heeft ons goed gedaan.<br />Rond 10 uur nam de kapitein weer het woord.<br />We werden er iets wijzer maar niet vrolijker van.<br />Er zijn onderhandelingen gaande met de autoriteiten van 2 havensteden . Deze besprekingen zijn in een ver gevorderd stadium. Helaas kan er vandaag geen beslissing worden genomen,omdat het zondag is ! Morgen om 4 uur hopen we te horen te krijgen welke haven we gaan aandoen en hoe het geregeld gaat worden met de thuisreis.<br />Uitgaande van de koers die we nu varen zou het goed kunnen zijn dat we in Singapore uitkomen.</p>
+<p>Even na het ontvangen van dit bericht ging de telefoon in de hut en werd ons gevraagd of we ook nog maar de &ldquo;Mariners Reception&rdquo; gingen. We hadden hier een uitnodiging voor ontvangen maar gezien de omstandigheden hadden we eigenlijk niet veel zin in en wisten ook niet wat er van moesten verwachten.<br />Maar toen werd verteld dat we op de eerste rij van het theater moesten plaatsnemen begrepen we dat er iets bijzonders gaande was. En dus, nadat we op eerste rij hadden plaatsgenomen en een glas Prosecco hadden genuttigd, werden we na een speech naar het podium geroepen om daar een bronze medaille uitgereikt te krijgen. Die hadden we verdiend door 100 dagen aan boord van een HAL schip door te brengen.<br />Er werd een foto gemaakt door de boordfotograaf.<br />Daarnaast was er ook een &ldquo;Mariniers Lunch&rdquo; met alweer Prosecco.<br />&rsquo;s Middags zijn we eerst naar een optreden geweest van de Filipijnse crew. Daarna naar een optreden van 2 pianisten d&iacute;e gemakkelijk mee te zingen deuntjes speelden.<br />We hebben 3 rondjes over het promenadedek gelopen voor het tijd was om aan te schuiven voor het diner. En weer kregen we een aperitief aangeboden. Ditmaal in de vorm van een prima champagne.<br />We hebben de dag afgesloten met nog meer muziek.</p>
+  <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="9-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+      </div>
+      <div class="gallery-item">
+        <img src="9-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="9-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+      <div class="gallery-item">
+        <img src="9-4.jpg" class="thumbnail" onclick="openModal(this.src)" />
+       
+      </div>
+    </div></div>
+   
+
+ <!-- 📝 Dagboek: 10 februari 2020 -->
+  <div class="blog-editor" style="margin-top: 40px;">
+  <h5 id="feb10"><strong>📍 At Sea, 10 februari 2020</strong></h5>
+
+ <p>Vanmorgen om 9 uur begon in de theaterzaal een live verslag van de oscar uitreikingen in Hollywood. Er was een groot beeldscherm geplaatst waarop de uitzending te volgen was.<br />Er was een ontbijt in buffetvorm.<br />En zo hebben we, met af en toe een hapje en drankje tot ons nemend, de ochtend doorgebracht. We werden nog een keer gestoord door een mededeling van de kapitein. Hij meldde dat er niets te melden viel. Vanmiddag hopen we meer te weten te komen.<br />Kijkend op de beeldschermen is te zien dat er niet meer richting Singapore gekoerst wordt, maar dat de koers nu meer westelijk is.<br />Dat zou erop kunnen duiden dat we richting Bangkok gaan.</p>
+<p>Inmiddels is het even na 4 uur.<br />De kapitein heeft gesproken, en mijn vermoeden was juist, we zetten koers naar Bangkok.<br />We verwachten daar donderdag aan te komen<br />Voor die tijd moeten er nog enkele acties worden ondernomen. Als eerste gaan we straks in de rij staan om onze temperatuur te laten checken. Dan moet ook weer een soort gezondheidsverklaring worden ingevuld.<br />We krijgen op korte termijn een formulier uitgereikt waarin we onze wensen omtrent de thuisreis kunnen kenbaar maken.<br />Dus eindelijk weten we, wat het einde van de cruise betreft, waar we aan toe zijn.<br />Hoe de vlucht geregeld gaat worden zullen later wel horen.<br />Hopelijk kan dit in een volgend bulletin vermeld worden.</p></div>
+  
+
+<!-- 📝 Dagboek: 11 februari 2020 -->
+    <div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb11"><strong>📍 At Sea, 11 februari 2020</strong></h5>
+
+  <p>We zijn de dag goed begonnen met wederom een &ldquo;sunrise stretch&rdquo; en omdat we toch in de buurt waren, hebben we als cooling down een stukje gefietst c.q. hardgelopen.<br />Na het ontbijt hadden we tijd om de administratie bij te werken, er moest opnieuw een taxi besteld worden vanaf Schiphol en we proberen goede stoelen te reserveren voor de terugvlucht.<br />Want&hellip;&hellip;. We vliegen op vrijdag 14 februari om 12.15 uur naar huis vanaf Bangkok.<br />Tenminste, dat dachten we.<br />In de ochtend kwam de brenger van het slechte nieuws weer aan het woord.</p>
+<p>Anutin Charnvirakul de Thaise minister van volksgezondheid schijnt op Facebook een bericht geplaatst te hebben waarin hij aangeeft geen toestemming gegeven te hebben aan HAL om de Westerdam te laten afmeren in Bangkok.<br />We blijken dus wederom niet welkom te zijn.<br />Er wordt op hoog niveau overleg gepleegd om het schip toch te laten afmeren in Bangkok. De Nederlandse en Amerikaanse regering schijnen hierin ook een rol te spelen.<br />De beeldschermen laten nog steeds zien dat we richting Bangkok gaan, maar het blijft gissen en afwachten, van de kapitein hebben we niets meer vernomen.<br />We lazen net in de krant dat de Thaise overheid wel toestemming heeft gegeven om voedsel en medicijnen aan boord te brengen.<br />Ook mag er gebunkerd worden.<br />We wachten het maar weer af.</p></div>
+  
+   
+    <!-- 📝 Dagboek: 12 februari 2020 -->
+   <div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb12"><strong>📍 At Sea, 12 februari 2020</strong></h5>
+
+  <p>Vanmorgen was er een crew&rsquo;s farewell show in het theater.<br />Zo&rsquo;n show is er altijd als een cruise op zijn eind loopt, al is daar nu weinig over te zeggen.<br />Er stonden enkele honderden bemanningsleden op het podium, de entertainment director en de maitre d &lsquo;hotel hielden een toespraak en brachten natuurlijk de huidige situatie waarin we verkeren ter sprake. Het werd een emotioneel gebeuren, beide sprekers hielden het niet droog.<br />Vanmiddag tijdens een filmvoorstelling nam de kapitein het woord, de situatie is nu als volgt:<br />We zijn onderweg naar een ankerplaats bij een eiland waar van ik de naam niet verstaan heb. Het eiland ligt 27 mijl van de plaats waar we eerst zouden heen gaan.<br />Als we daar zijn aangekomen wordt er proviand en brandstof ingenomen en wachten we verdere ontwikkelingen af.<br />Op het eiland is een marinebasis.<br />We worden nu al enkele uren begeleid door een marinevaartuig dat aan bakboord gelijk met ons op vaart.<br />Tijdens het diner zagen we plotseling het marineschip achter de Westerdam wegdraaien.<br />Vrijwel direct daarna schalde de inmiddels vertrouwde stem van Vincent Smit door de speakers. Het werd een heel verhaal maar het komt erop neer dat het schip de koers 180 graden verlegd en koers zet naar Sihanoukville in Cambodja, Daar zijn we morgenochtend om 7 uur. Als er vluchten zijn geregeld gaan we van boord en vliegen naar Vietnam, en vandaar naar huis.<br />Het kan dus nog wel even duren voor we van boord kunnen, en wanneer we thuis z&iacute;jn is al helemaal een groot vraagteken.<br />We gaan nu druk in de weer met het om boeken van de vlucht en taxi etc.</p></div>
+  <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="12-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+      </div>
+      <div class="gallery-item">
+        <img src="12-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="12-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+      
+    </div>
+    
+
+    <div class="blog-editor" style="margin-top: 40px;">
+  <h5 id="feb13"><strong>📍 At Sea, 13 februari 2020</strong></h5>
+
+  <p>Vanmorgen rond 7 uur ging het anker er onder. We hadden zicht op de stad Sihanoukville (Cambodja).<br />En toen begon het grote wachten.<br />Er werd een ponton naast het schip geplaatst en er meerde een scheepje af dat waarschijnlijk de nodige autoriteiten aan boord bracht.<br />Even daarna werd iedereen verzocht zijn paspoort in te leveren teneinde te worden voorzien van een visum. Wat later konden we weer naar de hut want daar lag een gezondheids verklaring gereed om te worden ingevuld. Later in de middag konden de paspoorten weer worden afgehaald.<br />Intussen was het nog steeds niet bekend wanneer we zouden afmeren in de stad. Over vliegtickets werd in het geheel niet gerept.<br />Maar toen, tegen de avond kwam er beweging in het schip en voeren we naar de pier in de stad. En daar liggen we nu, We mogen nog niet van boord.<br />Nadere mededelingen volgen.<br />Maar wanneer?<br />In Time Magazine was te lezen dat de Westerdam inderdaad enkele dagen geleden onderweg was naar Guam. Maar ook d&aacute;&aacute;r wilde men het schip niet ontvangen.</p></div>
+  <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="13-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+      </div>
+      <div class="gallery-item">
+        <img src="13-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="13-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+      
+    </div>
+    
+
+     <div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb14"><strong>📍 At Sea, 14 februari 2020</strong></h5>
+
+  <p>De stem van Vincent Smit klonk hedenmorgen om 06.15 uur uit de luidspreker die zich aan het hoofdeinde van ons bed bevindt. We moesten dus wel wakker worden.<br />Hij kondigde aan dat de eerste mensen van boord konden gaan en zich naar de gereedstaande bussen konden begeven.<br />Omdat ook de minister-president van Cambodja daarbij aanwezig zou zijn vond hij het wel een aardig idee om met z&rsquo;n allen naar dek 3 te gaan teneinde de MP zo te verwelkomen en dank te betonen.<br />Het zou op prijs worden gesteld als we ook de Cambodjaanse sjaal die we gisteren op ons bed aantroffen mee zouden nemen, zo konden we nog beter onze vreugde en dankbaarheid tonen.<br />We hebben er niet aan mee gedaan.<br />We hadden gepland naar de sunrise stretch te gaan, en dat hebben we dan ook gedaan.<br />Er zijn nog wel wat activiteiten gepland, maar er is niets bij dat ons kan bekoren, dus zijn we aan dek gaan zitten om wat te lezen en de administratie op orde te krijgen.<br />Er worden regelmatig aankondigingen gedaan, ik was juist gaan informeren of we misschien aan de wal konden. Dat bleek niet mogelijk, nog geen 2 minuten later werd er omgeroepen dat er de mogelijkheid was om aan de wal te gaan, er was zelfs een shuttlebus. Wat later een bericht dat men zich eerst moet laten registreren, weer een paar minuten later werd er gemeld dat ook een temperatuur controle vereist is.<br />En zo gaat het maar door.<br />Er was echter ook een bericht dat mensen die om ca 16.00 zouden vertrekken nu om 12.00 uur van boord kunnen, er is een vroegere vlucht gevonden.<br />Het is nu 11.00 uur, en wij weten nog niets, zelfs niet wanneer we gaan vliegen.<br />Het is om hopeloos van te worden.</p></div>
+  <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="14-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+      </div>
+      <div class="gallery-item">
+        <img src="14-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="14-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+      
+    </div>
+   
+    
+    <div class="blog-editor" style="margin-top: 40px;">
+  <h5 id="feb15"><strong>📍 At Sea, 15 februari 2020</strong></h5>
+
+  <p>Vanmorgen zagen we dat er groepen passagiers klaar stonden om het schip te verlaten. Omdat wij nog geen bericht hadden ontvangen wanneer wij van boord zouden gaan ben ik gaan informeren bij Guest relations, daar wist men te melden dat er een brief bezorgd zou worden met daarin de details. Naar verwachting zouden we vanavond of morgen naar huis kunnen vliegen<br />Omdat we in de middag nog niets hadden vernomen nog maar eens langsgegaan.<br />We krijgen nu te horen dat we vanavond een brief krijgen en morgen naar huis gaan.<br />Maar meer details zijn er niet.<br />De Westerdam begint nu echt op een spookschip te lijken, als het dat al niet was.<br />Er zijn nog ruim 100 passagiers aan boord, waarvan het merendeel Nederlanders.<br />Met sommige van hen zijn we in gesprek geraakt, en het is duidelijk dat de frustraties en het ongenoegen toenemen.<br />Iedereen is het erover eens dat er te veel onduidelijkheid is. Vooral de onzekerheid en de desinformatie maken mensen boos.</p>
+<p>Het is nu 18.30 uur en we weten nog niets&hellip;&hellip;</p></div>
+ 
+
+    <div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb16"><strong>📍 At Sea, 16 februari 2020</strong></h5>
+
+ <p>Nu is de chaos compleet.<br />We hebben zojuist een update aan mogen horen. Dat ging ongeveer als volgt:<br />De mensen die nu in Phnom Penh worden vastgehouden in een hotel worden nogmaals door een team medisch onderzocht, als blijkt dat zij virusvrij zijn mogen ze door reizen. Al moet er natuurlijk wel eerst een vlucht gevonden worden.<br />Als het onderzoekteam daar klaar is komt het naar Cambodja om de overgebleven 236 passagiers te checken.<br />Als dat okay blijkt te zijn moet ook voor deze mensen een vlucht gevonden worden, We denken dat we hier nog wel even zitten.<br />Om die reden hebben we vanmorgen gevraagd of we een grotere hut kunnen gaan betrekken, plek zat nu, zou je denken.<br />Normaal gesproken hebben we genoeg aan een binnenhut, als je normaal cruist ben je alleen maar in je hut om te slapen, maar nu ligt dat toch wat anders.<br />Er werd ons toegezegd dat we na de update een grotere hut zouden krijgen en die update is er zojuist geweest. Dus togen we in gezelschap van een Nederlands echtpaar naar Guest relations. Zij wilden een Nederlandse officier te spreken krijgen om hun wensen omtrent de thuisreis kenbaar te maken. Er kwam een Nederlandse officier aan de balie die de vragen aan hoorde en beloofde er iets mee te doen, er sluimerde toen al een vorm van irritatie bij de dame, zij vond dat het alleen de Hollanders waren die klaagden. De sfeer werd er niet beter op toen wij vroegen naar de beloofde grotere hut.<br />De hut werd ons toegezegd, en wel binnen een uur. Toen Ingrid opmerkte dat ze moe was van de hele situatie kwam de opmerking dat zij ook moe was. Waarop mijn antwoord was dat dit niet te vergelijken was. Op haar vraag waarom dat niet te vergelijken was heb ik geantwoord: &ldquo;u wordt ervoor betaald om moe te zijn en wij niet&rdquo;<br />Dat schoot in het verkeerde keelgat, ze liet weten het een onvriendelijke opmerking te vinden en draaide zich om en liep weg.<br />Volgens mij was het puur de vaststelling van een feit, maar zij zag het schijnbaar anders. Er zijn mensen geweest die naar hun idee ook aan de balie werden afgescheept of niet serieus werden genomen. E&eacute;n van hen zei; &rdquo; ik had haar wel over de balie willen trekken&rdquo;. We zijn bang dat dit soort situaties vaker gaat voorkomen.<br />Vanmorgen heb ik het ministerie van buitenlandse zaken in Den Haag gebeld.<br />Ik heb de situatie uitgelegd en formeel om hulp gevraagd. Ik heb de nodige gegevens achter gelaten en wacht verdere ontwikkeling af.<br />Omdat het me wel een goed idee leek om meer mensen op deze mogelijkheid te wijzen zijn we in het restaurant op zoek gegaan naar Nederlanders. We hebben er 14 kunnen traceren, zij vonden het allemaal een goed idee en gaven hun naam op. Daarna heb ik het ministerie nogmaals gebeld en de 14 namen doorgegeven. We wachten nu tot de Nederlandse consul of een ambtenaar mij gaat bellen en we misschien aan boord een gesprek kunnen hebben.</p> </div>   
+ 
+
+    <div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb17"><strong>📍 At Sea, 17 februari 2020</strong></h5>
+
+  <p>De stem van Vincent Smit klonk hedenmorgen om 06.15 uur uit de luidspreker die zich aan het hoofdeinde van ons bed bevindt. We moesten dus wel wakker worden.<br />Hij kondigde aan dat de eerste mensen van boord konden gaan en zich naar de gereedstaande bussen konden begeven.<br />Omdat ook de minister-president van Cambodja daarbij aanwezig zou zijn vond hij het wel een aardig idee om met z&rsquo;n allen naar dek 3 te gaan teneinde de MP zo te verwelkomen en dank te betonen.<br />Het zou op prijs worden gesteld als we ook de Cambodjaanse sjaal die we gisteren op ons bed aantroffen mee zouden nemen, zo konden we nog beter onze vreugde en dankbaarheid tonen.<br />We hebben er niet aan mee gedaan.<br />We hadden gepland naar de sunrise stretch te gaan, en dat hebben we dan ook gedaan.<br />Er zijn nog wel wat activiteiten gepland, maar er is niets bij dat ons kan bekoren, dus zijn we aan dek gaan zitten om wat te lezen en de administratie op orde te krijgen.<br />Er worden regelmatig aankondigingen gedaan, ik was juist gaan informeren of we misschien aan de wal konden. Dat bleek niet mogelijk, nog geen 2 minuten later werd er omgeroepen dat er de mogelijkheid was om aan de wal te gaan, er was zelfs een shuttlebus. Wat later een bericht dat men zich eerst moet laten registreren, weer een paar minuten later werd er gemeld dat ook een temperatuur controle vereist is.<br />En zo gaat het maar door.<br />Er was echter ook een bericht dat mensen die om ca 16.00 zouden vertrekken nu om 12.00 uur van boord kunnen, er is een vroegere vlucht gevonden.<br />Het is nu 11.00 uur, en wij weten nog niets, zelfs niet wanneer we gaan vliegen.<br />Het is om hopeloos van te worden.</p></div>
+  <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="17-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+      </div>
+      <div class="gallery-item">
+        <img src="17-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="17-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+       <div class="gallery-item">
+        <img src="17-4.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+    </div>
+    
+    <div class="blog-editor">
+  <h5 id="feb18"><strong>📍 At Sea, 18 februari 2020</strong></h5>
+
+ <p>We zitten er een beetje door heen en hebben eens uitgeslapen. Dus vandaag geen yoga tijdens de zonsopkomst op het achterdek.<br />Na het ontbijt en een kort dutje zijn we naar de BB King club gegaan om daar een kookles bij te wonen van de Indiase chef-kok.<br />Tijdens de les kwam Vincent weer aan het woord met weer geen goed nieuws.<br />Als de tests die gisteren zijn gedaan allemaal negatief zijn gaat het nog een hele klus worden om ons thuis te krijgen. Dat was het natuurlijk al, maar nu komt erbij dat luchthavens in de buurt ons niet willen ontvangen. Kuala Lumpur is er daar &eacute;&eacute;n van. En dat was juist de plaats vanwaar onze oorspronkelijke intercontinentale vlucht zou beginnen.<br />Na het aanhoren van dit bericht heb ik buitenlandse zaken in Den Haag maar weer gebeld en de vraag gesteld waarom er geen kontact met ons wordt opgenomen en hoe, en of men ons gaat bijstaan.<br />Na een lange wachttijden kreeg ik als reactie:<br />&ldquo;Ik ga u het telefoonnummer geven van de consul ter plaatse, dan kunt u die bellen.&rdquo;<br />Uiteraard heb ik dat direct gedaan.<br />Maar helaas verder dan het inspreken van een voicemail ben ik niet gekomen.<br />Ik heb luid en duidelijk laten weten dat we het nu zat zijn om niet gehoord te worden.<br />Ik heb mijn telefoonnummer en emailadres achter gelaten en hoop er maar het beste van.<br />Maar hopen doen we al zo lang.<br />Vanmiddag was er weer een pub quiz. E&eacute;n van de vragen was welke lading 2 Chinese zeilschepen vervoerden in de 19de eeuw tijdens een race naar Europa. Toen ik als antwoord &ldquo;Corana&rdquo; riep werd dat niet goedgekeurd.<br />Straks gaan we dineren in de &ldquo;pinnacle grill&rdquo; een specialiteitenrestaurant waarvoor normaal een meerprijs wordt gerekend.<br />Toen we gisteren in de dining room zaten werden we daarvoor uitgenodigd.</p></div>
+
+
+    <div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb19"><strong>📍 At Sea, 19 februari 2020</strong></h5>
+
+ <p>We hebben gisteren een prima diner aangeboden gekregen.<br />Een 4 gangen keuzemenu met bijpassende wijnen.<br />Er kwam tijdens het diner een heer aan ons tafeltje staan die zich voorstelde als Frits, van het hoofdkantoor van HAL in Seattle.<br />Er ontspon zich een geanimeerd gesprek waarin we duidelijk en uitgebreid onze mening over de situatie konden schetsen.<br />Uiteindelijk zijn we niet veel meer te weten gekomen dan dat we al wisten, iedereen doet zijn uiterste best om de zaak tot een goed einde te brengen.<br />Toen Frits op mijn telefoon iets in de Nederlandse taal zag staan ontdekte hij dat we Nederlanders zijn. En bleek hij ook Nederlander te zijn.</p>
+<p>Daarna was er een druk mail, telefoon en Whatsapp verkeer.<br />Er staat een artikel over ons in het AD, binnenkort komt ook een stukje op www.nu.nl<br />Ook het lokale weekblad Groot Rijswijk is van plan iets te plaatsen.<br />Verder hebben verschillende familie leden de 24 uurs alarmlijn van het ministerie van buitenlandse zaken in Den Haag gebeld om te informeren naar onze situatie.</p>
+<p><span style="color: #da4444;">09.00 uur Breaking news!!!!!!!!!</span></p>
+<p>We gaan van boord is er zojuist omgeroepen.<br />We moeten onze koffers voor 10 uur op de gang zetten. Daarna kunnen we nog een vroege lunch gebruiken. Men verwacht om ca<br />12.30 te gaan ontschepen. We gaan dan in bussen naar Phnom Penh, een rit van 6 uur.<br />Daar worden we in een hotel ondergebracht en krijgen we nadere informatie over onze vlucht (en).<br />Om 12 uur werden we verzocht plaats te nemen in &eacute;&eacute;n van de klaarstaande bussen. Bij de gangway kregen we een voedselpakket overhandigd en konden we ons door een haag van bemanningsleden en plaatselijke hoogwaardigheidsbekleders een weg naar de busbanen. Er werd gekust en gehugt, er werden bloemen uitgewisseld en er werden foto&rsquo;s genomen, heel veel foto&rsquo;s genomen. Iedereen moest met iedereen op de foto.<br />We vertrokken om 13.00 uur. Een colonne van 7 bussen werd voorafgegaan door een auto met zwaailicht en sirene. Daar weer achter reden nog 3 auto&rsquo;s met ongetwijfeld VIP&rsquo;s aan boord.<br />Na een rit van bijna 6 uur zijn we aangekomen in het hotel. We werden met zang, dans en een drankje ontvangen.<br />Natuurlijk waren er ook weer veel camera&rsquo;s aan het draaien. Na de onvermijdelijk temperatuur check konden we snel naar de kamer. We logeren in een heuse suite, een kamer als een balzaal, een extra slaapkamer, zitkamer met tv etc.<br />Een volledig keuken en 2 badkamers met alles er op en aan.<br />We denken dat we dat wel verdiend hebben na alle ellende en de barre busreis.<br />Straks is er een meeting dan krijgen we misschien te horen wanneer we gaan vliegen.</p>
+<p>Flights Update</p>
+<p>In de meeting die er zojuist was is eigenlijk alleen de mededeling gedaan dat er morgen om 9 uur weer een meeting is.<br />We moeten zorgen dat de koffer gepakt is want het zou kunnen dat we meteen moeten afreizen.</p>
+<p>Maar&hellip;.. het kan ook vrijdag worden.</p></div>
+
+<div class="gallery-row">
+      <div class="gallery-item">
+        <img src="19-1.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+      </div>
+      <div class="gallery-item">
+        <img src="19-2.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        
+        </div>
+         <div class="gallery-item">
+        <img src="19-3.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+       <div class="gallery-item">
+        <img src="19-4.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      
+        </div>
+    </div>
+
+
+ <div class="blog-editor">
+  <h5 id="feb20"><strong>📍 At Sea, 20 februari 2020</strong></h5>
+
+ <p>Na een goed ontbijt en een ochtendwandeling was er dan om 9 uur de meeting.<br />Het was al snel duidelijk; mensen wiens kamernummer op de billboards was vermeld vliegen vandaag nog naar huis d.w.z. naar Istanbul. Vanaf daar is het nog een verrassing maar dan zijn we in ieder geval een stukje op streek.<br />En ja, ons nummer stond op de lijst.<br />Dus moesten we snel de koffer ophalen die al ingepakt stond. Terug in de lobby was het een geweldige chaos. Mensen gaven verschillende instructies en zo werden we van het kastje naar de muur gestuurd. Uiteindelijk zijn we in een bus terecht gekomen die om 10 uur vertrok naar het vliegveld.<br />Intussen zijn we op het vliegveld, het inchecken geen redelijk snel, We hebben nog 1 plaats bij de uitgang kunnen bemachtigen, zodat Ingrid met gestrekte benen kan zitten.<br />We vertrekken om 13.35 uur naar Istanbul, We krijgen daar te horen wanneer de vlucht naar Amsterdam gaat.</p></div>
+
+ <div class="blog-editor" style="margin-top: 40px;">
+ <h5 id="feb21"><strong>📍 Thuis, 21 februari 2020</strong></h5>
+
+<p>We zijn gisteren even na 16.00 uur opgestegen van Phnom Penh . De geplande vertrektijd was 13.35, dus geen goed begin<br />Het is een non stop vlucht die een goede 12 uur gaat duren. Als het goed is komen we in Istanbul aan om ca. 22.00 plaatselijk tijd. De vraag is of er dan nog een vlucht is naar Amsterdam.<br />Het is nu middernacht Phnom Penh tijd.<br />We zijn zojuist geland in Karachi.<br />E&eacute;n uur geleden is het toestel omgekeerd na een aankondiging van de piloot die niemand verstaan/begrepen heeft.<br />Ook de vertegenwoordigers van HAL die aan boord zijn doen geen mededelingen.<br />Het is 01.45 uur, er is bijgetankt. Ook is er een mededeling gedaan door de HAL.<br />Er is niet bekend wat er nu gaat gebeuren.<br />Dus&hellip;afwachten, we raken er wel aan gewend.<br />02.15 er wordt gemeld dat we toestemming nodig hebben van de lokale autoriteiten om te vertrekken. Waarheen en wanneer blijft een verrassing. Men gaat rond met drankjes.<br />03.50 er is nogmaals bijgetankt. Nieuwe vluchtschema is bekend: bestemming Amsterdam!!!<br />06.30 Geland in Amsterdam. We stappen niet uit door een slurf, maar worden via en trap en de koude buitenlucht naar bussen geleid.<br />Die brengen ons naar een ruimte waar we worden opgewacht door medewerkers van de GGD, zij voorzien ons van boterhammen met kaas en flesjes water. We krijgen goede raad en mogen dan verder.<br />Dan naar band 15 om de koffers op te pikken.<br />Maar de ellende is nog niet voorbij. Het zou tot 09.15 uur duren voor we onze koffers voorbij zien gaan. Er heerst een geweldige chaos. We hebben verschillende mensen naar opheldering gevraagd maar niemand heeft in het geheel niet of een onbevredigend antwoord. De koffers zouden op de verkeerde plaats terecht zijn gekomen of helemaal nog niet gelost zijn.<br />Ondertussen heeft de taxichauffeur al een paar keer gebeld. We stellen voor maar te blijven wachten en voor de wachttijd iets extra in rekening te brengen.<br />Dat is akkoord.<br />En zo zijn we dan rond 10 uur eindelijk thuis<br />We kunnen bijkomen van een zeer vermoeiende reis, het zal de nodige tijd kosten om alles een plekje te geven.<br />We zullen ook in gesprek moeten met de mensen van de reisverzekering.<br />Het reisbureau heeft al aangegeven ons hierbij behulpzaam te willen zijn.<br />Maar eerst gaan we rusten.</p></div>
+
+
+
+<div style="text-align: center;">
+  <button onclick="window.location.href='krant.html'">
+    Ga naar krantenartikelen
+  </button>
+</div>
+
+ <!-- Footer -->
+  <footer>
+    <p>© 2025 robertwim | Alle rechten voorbehouden</p>
+    <p><a href="contact.html">Contact</a> | <a href="over.html">Over deze reis</a></p>
+  </footer>
+
+  <!-- Vergrotingsvenster -->
+  <div class="modal fade" id="fotoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content bg-transparent border-0">
+        <img id="modalImage" src="" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+    function openModal(src) {
+      document.getElementById("modalImage").src = src;
+      $('#fotoModal').modal('show');
+    }
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const introBox = document.querySelector(".intro-box");
+    if (introBox) {
+      introBox.classList.add("visible");
+    }
+  });
+</script>
+
+</body>
+</html>
