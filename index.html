@@ -78,14 +78,13 @@
     display: block;
   }
 
-  .carousel-caption {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 1.2em;
-    color: #333;
-  }
-#carouselExampleIndicators {
-  margin-bottom: 3rem;
+ .carousel-caption {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.2em;
+  color: #ffffff; /* spierwit */
+  opacity: 0;
+  animation: fadeInText 1.5s ease forwards;
 }
 
 
@@ -95,6 +94,10 @@
   opacity: 0;
   animation: fadeInText 1.5s ease forwards;
 }
+.carousel-item.active .carousel-caption {
+  color: #ffffff;
+}
+
 
 @keyframes fadeInText {
   to {
@@ -252,6 +255,38 @@
   color: red;
   font-size: 1.2em;
 }
+/* Voor het blokje van ontvangen reacties */
+.bericht-blok {
+  background: #f0f0f0;
+  padding: 1em;
+  margin-bottom: 1em;
+  position: relative;
+  border-radius: 10px; /* iets ronder */
+  border: 2px solid #8B4513; /* bruine kleur */
+}
+
+/* Voor het formulier */
+#contact-form {
+  background: #fff8f0;
+  padding: 1em;
+  margin: 2em auto;
+  max-width: 600px;
+  border-radius: 10px;
+  border: 2px solid #8B4513;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Voor de invoervelden */
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  border: 1px solid #8B4513;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
 
 </style>
 </head>
@@ -291,7 +326,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="travel.jpg" alt="Slide 1">
+          <img class="d-block w-100" src="nacht.jpg" alt="Slide 1">
           <div class="carousel-caption">
             <h5>Welkom op ons blog</h5>
             <p>Bekijk onze nieuwste verhalen en foto's</p>
@@ -374,11 +409,17 @@ Ingrid en Robert<br>
   </form>
 
   <!-- Footer -->
-  <footer style="margin-top: 4em; padding: 2em 0; text-align: center; font-size: 0.9em; color: #666; border-top: 1px solid #ccc;">
-    &copy; 2025 Robert Wim • <a href="mailto:info@robertwim.nl" style="color: #0055a5; text-decoration: none;">Contact</a>
-  
-  
-  </footer>
+  <footer style="background:#222; color:#fff; text-align:center; padding:20px;">
+  <p>&copy; 2025 <strong>robertwim</strong></p>
+  <a href="https://twitter.com/robertwim" style="margin:0 10px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="24">
+  </a>
+  <a href="https://github.com/robertwim" style="margin:0 10px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="24">
+  </a>
+</footer>
+
+
 
   <!-- Scripts -->
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
