@@ -91,59 +91,63 @@
     }
 
     /* Media blokken */
-    .media-blok {
-      background-color: #fdfdfd;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 20px;
-      height: 180px;
-      padding: 20px;
-      margin: 40px auto;
-      max-width: 900px;
-      border: 4px solid #1743e3;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: box-shadow 0.3s ease;
-    }
+    /* Media blokken */
+.media-blok {
+  background-color: #fdfdfd;
+  display: flex;              /* flexbox active */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  height: 180px;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 900px;
+  border: 4px solid #1743e3;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
 
-    .media-blok:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+.media-blok:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-    .media-thumb {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 4px solid #1743e3;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.media-thumb {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 4px solid #1743e3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .media-thumb:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    }
+.media-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
 
-    .media-tekst {
-      flex: 1;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 15px;
-      color: #444;
-      overflow: hidden;
-    }
-    @media screen and (max-width: 768px) {
+.media-tekst {
+  flex: 1;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: #444;
+  overflow: hidden;
+}
+
+/* Responsief gedrag */
+@media screen and (max-width: 768px) {
   .media-blok {
-    flex-direction: column;
+    flex-direction: column;   /* thumbnail boven tekst */
     height: auto;
     padding: 16px;
     gap: 12px;
   }
 
   .media-thumb {
-    width: 100%;
+    width: 100%;              /* schaalt mee met container */
     height: auto;
-    max-height: 300px;
+    max-height: 200px;
+    object-fit: cover;
   }
 
   .media-tekst {
@@ -165,6 +169,29 @@
     width: 48px;
     height: 48px;
   }
+}
+
+/* Read more link */
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.read-more:hover {
+  color: #ff6600;
+}
+
+.read-more .arrow {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.read-more:hover .arrow {
+  transform: translateX(3px);
 }
 
   </style>
@@ -211,9 +238,12 @@
   </a>
   <div class="media-tekst">
     <h5>Aankomst op Schiphol</h5>
-    <p>Hier is in een kort fragment te zien dat we na aankomst op Schiphol, terwijl we uren op onze bagage moeten wachten, worden geïnterviewd door "Hart van Nederland".</p>
+    <p>Hier is in een kort fragment te zien dat we na aankomst op Schiphol, terwijl we uren op onze bagage moeten wachten, worden geïnterviewd door "Hart van Nederland"</p>
+    <a href="https://www.hartvannederland.nl/milieu-gezondheid/artikelen/passagiers-westerdam-boos-terugreis" target="_blank" class="read-more">
+      Bekijk hier de video →
   </div>
 </div>
+
 
 <div class="media-blok">
   <a href="https://www.youtube.com/watch?v=oDPtz1Pfd0M&t=14s" target="_blank">
@@ -222,6 +252,49 @@
   <div class="media-tekst">
     <h5>Journaal van Mediacorp (Singapore)</h5>
     <p>De Cambodjaanse autoriteiten gaan 20 passagiers van het cruiseschip Westerdam testen op COVID-19. Het schip ligt voor anker bij Sihanoukville nadat het werd geweigerd door Japan, Taiwan, Guam, de Filipijnen en Thailand.</p>
+    <a href="https://www.youtube.com/watch?v=oDPtz1Pfd0M&t=14s" target="_blank" class="read-more">
+      Bekijk hier de video →
+  </div>
+</div>
+
+
+<div class="media-blok">
+  <a href="https://www.youtube.com/watch?v=uk3biZBpPgM" target="_blank">
+    <img src="jineknieuw.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  <div class="media-tekst">
+    <h5>Interview bij Eva Jinek</h5>
+    <p>
+Toen we een paar dagen thuis waren werden we telefonisch benaderd met de vraag of we aanwezig wilden zijn bij de uitzending van Eva Jinek. We zijn daar geweest en hebben ons verhaal kunnen doen. </p>
+ <a href="https://www.youtube.com/watch?v=uk3biZBpPgM" target="_blank" class="read-more">
+      Bekijk hier de video →
+  </div>
+</div>
+  
+
+<div class="media-blok">
+  <a href="https://www.ad.nl/binnenland/schip-met-91-nederlanders-mag-niet-naar-japan-waar-gaan-we-heen~a9bdb51d/" 
+       target="_blank">
+    <img src="adnieuw.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  <div class="media-tekst">
+    <h5>Schip met 91 Nederlanders mag niet naar Japan</h5>
+    <p>Het cruiseschip De Westerdam, eigendom van de Holland-Amerika Lijn, dobbert doelloos voor de kust van Taiwan omdat het niet mag aanmeren in Japan vanwege het coronavirus. Aan boord zitten 91 Nederlanders.</p>
+    <a href="https://www.ad.nl/binnenland/schip-met-91-nederlanders-mag-niet-naar-japan-waar-gaan-we-heen~a9bdb51d/" target="_blank" class="read-more">
+      Lees meer →
+  </div>
+</div>
+
+
+<div class="media-blok">
+  <a href="https://photos.google.com/search/CgAiCBIGCgRyAgoAKLPcjqKtMw%3D%3D/photo/AF1QipM8JtO1gQLzaZhb5GIQ7erWVFTgHkyjMshedq1u" target="_blank">
+    <img src="rodi.jpg" alt="Interview thumbnail" class="media-thumb">
+  </a>
+  <div class="media-tekst">
+    <h5>Rijswijkers in onzekerheid op cruiseschip Westerdam</h5>
+    <p>Al weken verkeren Robert van Rookhuizen en zijn vrouw Ingrid in onzekerheid.Zij gingen aan boord van de Westerdam, het cruiseschip dat vanwege het coronavirus niet mocht aanmeren bij diverse havens in Azië.</p> <a href="https://photos.google.com/search/CgAiCBIGCgRyAgoAKLPcjqKtMw%3D%3D/photo/AF1QipM8JtO1gQLzaZhb5GIQ7erWVFTgHkyjMshedq1u" target="_blank" class="read-more">
+      Lees meer →
+    </a>
   </div>
 </div>
 
@@ -233,31 +306,12 @@
   <div class="media-tekst">
     <h5>Veilige haven voor cruiseschip, Haagse passagiers opgelucht</h5>
     <p>Het leek een schitterende cruise te worden die Hagenaar Hans van Bemmelen en zijn partner Joan zouden gaan maken. Het coronavirus gooide roet in het eten. Cambodja biedt hun schip nu een veilige haven, zodat iedereen naar huis kan.</p>
+    <a href="https://www.denhaagcentraal.net/nieuws/veilige-haven-voor-cruiseschip-haagse-passagiers-opgelucht" target="_blank" class="read-more">
+      Lees meer →
+    </a>
   </div>
 </div>
 
-
-  
-  <div class="media-blok">
-  <a href="https://www.youtube.com/watch?v=uk3biZBpPgM" target="_blank">
-    <img src="jineknieuw.jpg" alt="Interview thumbnail" class="media-thumb">
-  </a>
-  <div class="media-tekst">
-    <h5>Interview bij Eva Jinek</h5>
-    <p>Eva Jinek uitzending
-Toen we een paar dagen thuis waren werden we telefonisch benaderd met de vraag of we aanwezig wilden zijn bij de uitzending van Eva Jinek. We zijn daar geweest en hebben ons verhaal kunnen doen. De foto is door ons zelf genomen aan boord van de "Westerdam" en verstuurd naar de "Telegraaf". Daar is de foto in een krantenartikel verschenen.</p>
-  </div>
-</div>
-<!-- Laatste test voor thumbnail fix -->
-<div class="media-blok">
-  <a href="https://www.ad.nl/binnenland/schip-met-91-nederlanders-mag-niet-naar-japan-waar-gaan-we-heen~a9bdb51d/" target="_blank">
-    <img src="adnieuw.jpg" alt="Interview thumbnail" class="media-thumb">
-  </a>
-  <div class="media-tekst">
-    <h5>Schip met 91 Nederlanders mag niet naar Japan</h5>
-    <p>Het cruiseschip De Westerdam, eigendom van de Holland-Amerika Lijn, dobbert doelloos voor de kust van Taiwan omdat het niet mag aanmeren in Japan vanwege het coronavirus. Aan boord zitten 91 Nederlanders.</p>
-  </div>
-</div>
 
 <!-- 🌅 Footer -->
 <footer class="site-footer mt-5">
