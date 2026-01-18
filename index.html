@@ -12,6 +12,76 @@
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Montserrat:wght@100;400;500;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* --- GALERIJ LAYOUT --- */
+.gallery-container {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 15px;
+}
+
+.gallery-item {
+  width: 30%;
+  text-align: center;
+}
+
+.gallery-item img.thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.caption {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .gallery-row {
+    flex-direction: column;
+  }
+  .gallery-item {
+    width: 100%;
+  }
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
     body { background-color: #fff8dc; font-family: 'Montserrat', sans-serif; padding-top: 16px; }
 
     /* Navbar */
@@ -103,26 +173,36 @@
   <!-- Blogbericht -->
   <div class="container mb-4">
     <div class="blog-editor">
-      <h5>📍 Thuis, 8 december 2025</h5>
-      <p>Hallo,<br><hr>Deze keer geen update van een nieuwe reis die we aan het plannen of maken zijn.<br>
-        Ingrid is aan haar knie geopereerd en is voorlopig aan huis gekluisterd.<br>
-        Omdat we niet verwachten dat zij in de zomer dusdanig gerevalideerd zal zijn om de (geplande en geboekte ) cruise naar Japan te gaan ondernemen hebben we de cruise gecancelled.<br>
-        Ons jaarlijkse verblijf in Sainte Maxime hebben we om die reden met 2 weken verlengd.<br>
-<p>
-  Op <a href="https://robertwim.nl/krant.html" target="_blank">
-    deze pagina
-  </a> is een filmpje gezet waarvan we niet wisten dat het nog bestond, een goede vriend heeft het 5 jaar geleden opgenomen en bewaard.<br> Het is een opname van het interview dat we hadden bij/met Eva Jinek in februari 2020.<br><hr>
-Tevens maken we van de gelegenheid gebruik jullie mooie Kerstdagen en een Gelukkig en vooral gezond Nieuw Jaar te wensen.<br><hr>
-</p>
-</p> Groeten,<br><hr>Ingrid en Robert</p>
+      <h5>📍 Thuis, 18 januari 2026</h5>
+      <p>We zijn in Friesland, om precies te zijn in Terherne, een plaats gelegen aan het Sneekermeer.We zijn hier al sinds afgelopen zondag. We zijn bijtijds van huis  vertrokken om rond 15.00 uur in Lemmer te zijn, daar werd een nieuwjaarsconcert gehouden en daarvoor hadden we plaatsen gereserveerd. De weg erheen was redelijk goed te doen maar in Lemmer aangekomen bleek dat men alleen maar in de hoofdstraten had geveegd en gestrooid.Het bleek nog een hele opgave om de lokatie waar het optreden was te bereiken, maar we zijn er veilig aangekomen en hebben een mooi concert kunnen beluisteren.<br>Maar toen moesten we nog naar Terherne, 28 kilometer verderop.Het was intussen donker geworden en Google Maps raakte ook nog eens het spoor bijster. Ten lange leste zijn we veilig op de bestemming aangekomen en konden we in een behaaglijke temperatuur bijkomen van alle ontberingen.<br>
+        Vanaf dinsdag werd de temperatuur steeds aantrekkelijker en konden we er op uit trekken. We hebben steden in de buurt bezocht:Joure, Sneek, Leeuwarden en Drachten. Op sommige plaatsen hebben we het Museum bezocht. Vooral het Douwe Egberts Museum in Joure vonden we zeer de moeite waard.<br> Op Vrijdag hebben we een boottocht gemaakt met een luxe sloep, we zijn opgestapt in Woudsend en hebben 2 uur in de omgeving gevaren waarbij de schipper uitleg gaf over hetgeen er om ons heen te zien was.<br>
+        Verder hebben we veel geluierd en naar Netflix gekeken, en natuurlijk hebben we lekker gegeten en gedronken.<br>
+        Maar nu zit het er op, we gaan weer koers zetten naar de drukke en overbevolkte Randstad.<br>
+Tot een volgende reis!<br>
+Als je wilt reageren op dit bericht, doe dat dan per email (robertwim@gmail.com). De berichtenbox hieronder is "under construction"
+</p> Groeten,<br>Ingrid en Robert</p>
     </div>
   </div>
 
   <!-- Galerij -->
-  <div class="gallery">
-    <div class="gallery-item"><img src="cancel.jpg" class="thumbnail" onclick="openModal(this.src, 'a')"></div>
-    <div class="gallery-item"><img src="knee.jpg" class="thumbnail" onclick="openModal(this.src, 'a')"></div>
-  </div>
+   <div class="gallery-container">
+      <div class="gallery-row">
+        <div class="gallery-item">
+          <img src="haven.jpeg" class="thumbnail" onclick="openModal(this.src)" />
+          <div class="caption">Uitzicht van uit het huis</div>
+        </div>
+        <div class="gallery-item">
+          <img src="orkest.jpg" class="thumbnail" onclick="openModal(this.src)" />
+          <div class="caption">Concert in Lemmer</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gras.jpg" class="thumbnail" onclick="openModal(this.src)" />
+          <div class="caption">Sneekermeer in de zon</div>
+        </div>
+       
+      </div>
+    </div>
+    </div>
 
   <!-- Modal -->
   <div class="modal fade" id="fotoModal" tabindex="-1" role="dialog">
@@ -159,13 +239,17 @@ Tevens maken we van de gelegenheid gebruik jullie mooie Kerstdagen en een Gelukk
           <img class="icon" src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" />
           <span>GitHub</span>
         </a>
-        <a href="mailto:info@jouwdomein.nl">
+        <a href="mailto:robertwim@gmail.com">
           <img class="icon" src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
           <span>Email</span>
         </a>
       </div>
     </div>
   </footer>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="">
+</div>
 
   <!-- Scripts -->
   <!-- EmailJS -->
