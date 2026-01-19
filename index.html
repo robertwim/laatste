@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Montserrat:wght@100;400;500;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* --- GALERIJ LAYOUT --- */
+/* --- GALERIJ LAYOUT --- */
 .gallery-container {
   display: flex;
   justify-content: center;
@@ -51,28 +51,33 @@
     width: 100%;
   }
 }
-
 /* --- LIGHTBOX --- */
 .lightbox {
   display: none;
   position: fixed;
   z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
+  inset: 0;
+  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
+  padding: 0; /* geen extra ruimte die problemen veroorzaakt */
+  animation: fadeIn 0.3s ease-out forwards;
+  overflow: hidden; /* voorkomt scrollen */
 }
 
+/* Grote foto */
 .lightbox img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 90vw;     /* nooit breder dan scherm */
+  max-height: 90vh;    /* nooit hoger dan scherm */
+  width: auto;
+  height: auto;
+  object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 25px rgba(0,0,0,0.7);
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
+/* Sluitknop */
 .lightbox-close {
   position: absolute;
   top: 20px;
@@ -80,7 +85,23 @@
   font-size: 40px;
   color: white;
   cursor: pointer;
+  text-shadow: 0 0 10px black;
 }
+
+/* --- FADE-IN & FADE-OUT --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.97); }
+}
+
+
+
+
 
     body { background-color: #fff8dc; font-family: 'Montserrat', sans-serif; padding-top: 16px; }
 
@@ -171,60 +192,71 @@
   </div>
 
   <!-- Blogbericht -->
+  
   <div class="container mb-4">
-    <div class="blog-editor">
-      <h5>📍 Thuis, 18 januari 2026</h5>
-      <p>We zijn in Friesland, om precies te zijn in Terherne, een plaats gelegen aan het Sneekermeer.We zijn hier al sinds afgelopen zondag. We zijn bijtijds van huis  vertrokken om rond 15.00 uur in Lemmer te zijn, daar werd een nieuwjaarsconcert gehouden en daarvoor hadden we plaatsen gereserveerd. De weg erheen was redelijk goed te doen maar in Lemmer aangekomen bleek dat men alleen maar in de hoofdstraten had geveegd en gestrooid.Het bleek nog een hele opgave om de lokatie waar het optreden was te bereiken, maar we zijn er veilig aangekomen en hebben een mooi concert kunnen beluisteren.<br>Maar toen moesten we nog naar Terherne, 28 kilometer verderop.Het was intussen donker geworden en Google Maps raakte ook nog eens het spoor bijster. Ten lange leste zijn we veilig op de bestemming aangekomen en konden we in een behaaglijke temperatuur bijkomen van alle ontberingen.<br>
-        Vanaf dinsdag werd de temperatuur steeds aantrekkelijker en konden we er op uit trekken. We hebben steden in de buurt bezocht:Joure, Sneek, Leeuwarden en Drachten. Op sommige plaatsen hebben we het Museum bezocht. Vooral het Douwe Egberts Museum in Joure vonden we zeer de moeite waard.<br> Op Vrijdag hebben we een boottocht gemaakt met een luxe sloep, we zijn opgestapt in Woudsend en hebben 2 uur in de omgeving gevaren waarbij de schipper uitleg gaf over hetgeen er om ons heen te zien was.<br>
-        Verder hebben we veel geluierd en naar Netflix gekeken, en natuurlijk hebben we lekker gegeten en gedronken.<br>
-        Maar nu zit het er op, we gaan weer koers zetten naar de drukke en overbevolkte Randstad.<br>
-Tot een volgende reis!<br>
-Als je wilt reageren op dit bericht, doe dat dan per email (robertwim@gmail.com). De berichtenbox hieronder is "under construction"
-</p> Groeten,<br>Ingrid en Robert</p>
-    </div>
+  <div class="blog-editor">
+    <h5>📍 Thuis, 18 januari 2026</h5>
+
+    <p>
+      We zijn in Friesland, om precies te zijn in Terherne, een plaats gelegen aan het Sneekermeer.
+      We zijn hier al sinds afgelopen zondag. We zijn bijtijds van huis vertrokken om rond 15.00 uur
+      in Lemmer te zijn, daar werd een nieuwjaarsconcert gehouden en daarvoor hadden we plaatsen
+      gereserveerd. De weg erheen was redelijk goed te doen maar in Lemmer aangekomen bleek dat men
+      alleen maar in de hoofdstraten had geveegd en gestrooid.
+      <br><br>
+      Het bleek nog een hele opgave om de locatie waar het optreden was te bereiken, maar we zijn er
+      veilig aangekomen en hebben een mooi concert kunnen beluisteren.
+      <br><br>
+      Maar toen moesten we nog naar Terherne, 28 kilometer verderop. Het was intussen donker geworden
+      en Google Maps raakte ook nog eens het spoor bijster. Ten lange leste zijn we veilig op de
+      bestemming aangekomen en konden we in een behaaglijke temperatuur bijkomen van alle ontberingen.
+      <br><br>
+      Vanaf dinsdag werd de temperatuur steeds aantrekkelijker en konden we er op uit trekken. We
+      hebben steden in de buurt bezocht: Joure, Sneek, Leeuwarden en Drachten. Vooral het Douwe
+      Egberts Museum in Joure vonden we zeer de moeite waard.
+      <br><br>
+      Op vrijdag hebben we een boottocht gemaakt met een luxe sloep. We zijn opgestapt in Woudsend en
+      hebben 2 uur in de omgeving gevaren waarbij de schipper uitleg gaf over hetgeen er om ons heen
+      te zien was.
+      <br><br>
+      Verder hebben we veel geluierd en naar Netflix gekeken, en natuurlijk hebben we lekker gegeten
+      en gedronken.
+      <br><br>
+      Maar nu zit het er op, we gaan weer koers zetten naar de drukke en overbevolkte Randstad.
+      <br><br>
+      Tot een volgende reis!
+      <br><br>
+      
+
   </div>
+</div>
+  <div class="gallery-container">
+  <div class="gallery-row">
 
-  <!-- Galerij -->
-   <div class="gallery-container">
-      <div class="gallery-row">
-        <div class="gallery-item">
-          <img src="haven.jpeg" class="thumbnail" onclick="openModal(this.src)" />
-          <div class="caption">Uitzicht van uit het huis</div>
-        </div>
-        <div class="gallery-item">
-          <img src="orkest.jpg" class="thumbnail" onclick="openModal(this.src)" />
-          <div class="caption">Concert in Lemmer</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gras.jpg" class="thumbnail" onclick="openModal(this.src)" />
-          <div class="caption">Sneekermeer in de zon</div>
-        </div>
-       
-      </div>
-    </div>
+    <div class="gallery-item">
+      <img src="haven.jpeg" class="thumbnail" onclick="openModal(this.src)" />
+      <div class="caption">Uitzicht van uit het huis</div>
     </div>
 
+    <div class="gallery-item">
+      <img src="orkest.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      <div class="caption">Concert in Lemmer</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="gras.jpg" class="thumbnail" onclick="openModal(this.src)" />
+      <div class="caption">Sneekermeer in de zon</div>
+    </div>
+
+  </div>
+</div>
+
+<hr size="44" width="100%"  color="green">
   <!-- Modal -->
-  <div class="modal fade" id="fotoModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-      <div class="modal-content bg-dark border-0">
-        <button type="button" class="close text-white position-absolute" style="top:10px; right:20px;" data-dismiss="modal">&times;</button>
-        <img id="modalImage" src="" alt="Vergrote foto" class="w-100" />
-        <p id="modalCaption" class="text-white text-center mt-3"></p>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- Reactieformulier -->
-  <form id="contact-form">
-    <h5 style="text-align:center;">Laat een bericht achter</h5>
-    <input type="text" name="from_name" placeholder="Je naam" required />
-    <textarea name="message" placeholder="Je bericht" required></textarea>
-    <button type="submit">Verstuur</button>
-  </form>
-
-  <!-- Container voor berichten -->
-  <div id="berichten-container"></div>
+  <script type="text/javascript" src="https://form.jotform.com/jsform/260180502059045"></script>
 
   <!-- Footer -->
   <footer>
@@ -256,7 +288,7 @@ Als je wilt reageren op dit bericht, doe dat dan per email (robertwim@gmail.com)
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
   (function() {
-    emailjs.init("7l8gdSuQd0FDscjJB"); // vervang met je echte EmailJS Public Key
+    emailjs.init("7l8gdSuQd0FDscjJB");
   })();
 
   document.getElementById("contact-form").addEventListener("submit", function(e) {
@@ -289,59 +321,37 @@ Als je wilt reageren op dit bericht, doe dat dan per email (robertwim@gmail.com)
     `;
     container.prepend(blok);
 
-    // Opslaan in localStorage
     let berichten = JSON.parse(localStorage.getItem("berichten")) || [];
     berichten.unshift({ naam, bericht });
     localStorage.setItem("berichten", JSON.stringify(berichten));
   }
-
- 
-  window.addEventListener("load", () => {
-    fetch("/berichten")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("berichten-container");
-        container.innerHTML = "";
-        data.forEach(b => {
-          const blok = document.createElement("div");
-          blok.className = "bericht-blok";
-          blok.innerHTML = `
-            <strong>${b.naam}</strong><br>
-            <p>${b.bericht}</p>
-            <small>${new Date(b.datum).toLocaleString()}</small>
-          `;
-          container.appendChild(blok);
-        });
-      });
-  });
 </script>
 
+<!-- Lightbox scripts -->
+<script>
+function openModal(src) {
+  const box = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
 
+  img.src = src;
+  box.style.display = "flex";
+  box.style.animation = "fadeIn 0.3s ease-out forwards";
+}
 
-<!-- jQuery + Bootstrap JS -->
+function closeLightbox() {
+  const box = document.getElementById("lightbox");
+  box.style.animation = "fadeOut 0.25s ease-in forwards";
+
+  setTimeout(() => {
+    box.style.display = "none";
+  }, 250);
+}
+</script>
+
+<!-- Bootstrap JS (één keer!) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  function openModal(src, caption) {
-    document.getElementById('modalImage').src = src;
-    document.getElementById('modalCaption').textContent = caption;
-    $('#fotoModal').modal('show');
-  }
-</script>
 
-
-  
-
-  <!-- jQuery + Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function openModal(src, caption) {
-      document.getElementById('modalImage').src = src;
-      document.getElementById('modalCaption').textContent = caption;
-      $('#fotoModal').modal('show');
-    }
-  </script>
 </body>
 </html>
 
