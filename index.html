@@ -11,23 +11,64 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Montserrat:wght@100;400;500;700&display=swap" rel="stylesheet" />
 
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-/* --- GALERIJ LAYOUT --- */
+/* --- BODY --- */
+body {
+  background-color: #fff8dc;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 16px;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  background-color: #f5e9d4;
+  border-radius: 12px;
+  width: 95%;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid #c2a679;
+}
+.navbar-brand,
+.navbar-nav .nav-link {
+  font-family: 'Special Elite', serif;
+  color: #5a4632 !important;
+}
+
+/* --- SLIDESHOW --- */
+.carousel-item {
+  transition: opacity 1s ease-in-out;
+  min-height: 300px;
+}
+.carousel-caption {
+  font-size: 1.2em;
+  color: #fff;
+}
+
+/* --- BLOG EDITOR --- */
+.blog-editor {
+  background: #fff8e1;
+  border: 2px solid #a67c52;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* --- GALLERY --- */
 .gallery-container {
   display: flex;
   justify-content: center;
 }
-
 .gallery-row {
   display: flex;
   gap: 15px;
 }
-
 .gallery-item {
   width: 30%;
   text-align: center;
 }
-
 .gallery-item img.thumbnail {
   width: 100%;
   height: 200px;
@@ -35,22 +76,16 @@
   border-radius: 6px;
   cursor: pointer;
 }
-
 .caption {
   margin-top: 6px;
   font-size: 14px;
   color: #444;
 }
-
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-  .gallery-row {
-    flex-direction: column;
-  }
-  .gallery-item {
-    width: 100%;
-  }
+  .gallery-row { flex-direction: column; }
+  .gallery-item { width: 100%; }
 }
+
 /* --- LIGHTBOX --- */
 .lightbox {
   display: none;
@@ -60,24 +95,15 @@
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  padding: 0; /* geen extra ruimte die problemen veroorzaakt */
   animation: fadeIn 0.3s ease-out forwards;
-  overflow: hidden; /* voorkomt scrollen */
 }
-
-/* Grote foto */
 .lightbox img {
-  max-width: 90vw;     /* nooit breder dan scherm */
-  max-height: 90vh;    /* nooit hoger dan scherm */
-  width: auto;
-  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 0 25px rgba(0,0,0,0.7);
-  animation: fadeIn 0.4s ease-out forwards;
 }
-
-/* Sluitknop */
 .lightbox-close {
   position: absolute;
   top: 20px;
@@ -85,63 +111,130 @@
   font-size: 40px;
   color: white;
   cursor: pointer;
-  text-shadow: 0 0 10px black;
 }
 
-/* --- FADE-IN & FADE-OUT --- */
+/* --- ANIMATIES --- */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1); }
 }
-
 @keyframes fadeOut {
   from { opacity: 1; transform: scale(1); }
   to   { opacity: 0; transform: scale(0.97); }
 }
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
 
+/* --- FORMULIER (KAART-EFFECT + ICONEN) --- */
+.form-container {
+  background: #fffdf7;
+  border: 1px solid #e2d3b5;
+  border-radius: 16px;
+  padding: 35px;
+  max-width: 520px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
 
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.08),
+    0 8px 20px rgba(0,0,0,0.12);
 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.form-container:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.10),
+    0 12px 28px rgba(0,0,0,0.18);
+}
+.form-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.6);
+  pointer-events: none;
+}
+.form-container h2 {
+  color: #a67c52;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
 
+/* Inputgroep */
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+.input-group .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #a67c52;
+}
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #a67c52;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
 
-    body { background-color: #fff8dc; font-family: 'Montserrat', sans-serif; padding-top: 16px; }
+/* Knop */
+.form-container button {
+  background-color: #a67c52;
+  color: #fff8e1;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.form-container button:hover {
+  background-color: #8b5e3c;
+}
 
-    /* Navbar */
-    .navbar { background-color: #f5e9d4; border-radius: 12px; width: 95%; margin: 0 auto 20px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 1px solid #c2a679; }
-    .navbar-brand, .navbar-nav .nav-link { font-family: 'Special Elite', serif; color: #5a4632 !important; }
+/* --- FOOTER --- */
+footer {
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:24px 16px;
+  margin-top:40px;
+}
+footer .links {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  align-items:center;
+  margin-top:10px;
+}
+footer .links a {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+}
+footer .links a:hover { text-decoration:underline; }
+footer img.icon { width:22px; height:22px; }
 
-    /* Slideshow */
-    .carousel-item { transition: opacity 1s ease-in-out; min-height: 300px; }
-    .carousel-caption { font-size: 1.2em; color: #fff; }
-
-    /* Gallery */
-    .thumbnail { max-width: 200px; border-radius: 14px; cursor: pointer; border: 2px groove #000; }
-    .gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:30px; }
-    .gallery-item { text-align:center; width:200px; }
-
-    /* Blog editor */
-    .blog-editor { background: #fff8e1; border: 2px solid #a67c52; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-
-    /* Contactformulier */
-    #contact-form { background: #fff8f0; padding: 1em; margin: 2em auto; max-width: 600px; border-radius: 10px; border: 2px solid #8B4513; }
-    #contact-form input, #contact-form textarea { width: 100%; padding: 0.8em; margin-bottom: 1em; border-radius: 8px; border: 1px solid #8B4513; box-sizing: border-box; }
-    #contact-form button { padding: 0.5em 1em; background: #0055a5; color: white; border: none; cursor: pointer; }
-
-    /* Berichtencontainer */
-    #berichten-container { max-width: 600px; margin: 2em auto; }
-    .bericht-blok { background: #f0f0f0; padding: 1em; margin-bottom: 1em; position: relative; border-radius: 10px; border: 2px solid #8B4513; }
-    .verwijder-knop { position: absolute; top: 5px; right: 10px; cursor: pointer; color: red; font-size: 1.2em; }
-
-    /* Footer */
-    footer { background:#000; color:#fff; text-align:center; padding:24px 16px; margin-top:40px; }
-    footer .links { display:flex; gap:16px; justify-content:center; align-items:center; margin-top:10px; }
-    footer .links a { display:inline-flex; align-items:center; gap:8px; color:#fff; text-decoration:none; font-weight:500; }
-    footer .links a:hover { text-decoration:underline; }
-    footer img.icon { width:22px; height:22px; }
   </style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-4">
     <div class="container">
       <a class="navbar-brand" href="index.html">On the road again!</a>
@@ -160,13 +253,13 @@
     </div>
   </nav>
 
-  <!-- Slideshow -->
+  <!-- SLIDESHOW -->
   <div class="container-fluid p-0 mb-5">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExample" data-slide-to="1"></li>
+        <li data-target="#carouselExample" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -191,83 +284,77 @@
     </div>
   </div>
 
-  <!-- Blogbericht -->
-  
+  <!-- BLOG -->
   <div class="container mb-4">
-  <div class="blog-editor">
-    <h5>📍 Thuis, 18 januari 2026</h5>
-
-    <p>
-      We zijn in Friesland, om precies te zijn in Terherne, een plaats gelegen aan het Sneekermeer.
-      We zijn hier al sinds afgelopen zondag. We zijn bijtijds van huis vertrokken om rond 15.00 uur
-      in Lemmer te zijn, daar werd een nieuwjaarsconcert gehouden en daarvoor hadden we plaatsen
-      gereserveerd. De weg erheen was redelijk goed te doen maar in Lemmer aangekomen bleek dat men
-      alleen maar in de hoofdstraten had geveegd en gestrooid.
-      <br><br>
-      Het bleek nog een hele opgave om de locatie waar het optreden was te bereiken, maar we zijn er
-      veilig aangekomen en hebben een mooi concert kunnen beluisteren.
-      <br><br>
-      Maar toen moesten we nog naar Terherne, 28 kilometer verderop. Het was intussen donker geworden
-      en Google Maps raakte ook nog eens het spoor bijster. Ten lange leste zijn we veilig op de
-      bestemming aangekomen en konden we in een behaaglijke temperatuur bijkomen van alle ontberingen.
-      <br><br>
-      Vanaf dinsdag werd de temperatuur steeds aantrekkelijker en konden we er op uit trekken. We
-      hebben steden in de buurt bezocht: Joure, Sneek, Leeuwarden en Drachten. Vooral het Douwe
-      Egberts Museum in Joure vonden we zeer de moeite waard.
-      <br><br>
-      Op vrijdag hebben we een boottocht gemaakt met een luxe sloep. We zijn opgestapt in Woudsend en
-      hebben 2 uur in de omgeving gevaren waarbij de schipper uitleg gaf over hetgeen er om ons heen
-      te zien was.
-      <br><br>
-      Verder hebben we veel geluierd en naar Netflix gekeken, en natuurlijk hebben we lekker gegeten
-      en gedronken.
-      <br><br>
-      Maar nu zit het er op, we gaan weer koers zetten naar de drukke en overbevolkte Randstad.
-      <br><br>
-      Tot een volgende reis!
-      <br><br>
-      
-
+    <div class="blog-editor">
+      <h5>📍 Thuis, 18 januari 2026</h5>
+      <p>
+        We zijn in Friesland, om precies te zijn in Terherne, een plaats gelegen aan het Sneekermeer...
+      </p>
+    </div>
   </div>
-</div>
+
+  <!-- GALLERY -->
   <div class="gallery-container">
-  <div class="gallery-row">
+    <div class="gallery-row">
 
-    <div class="gallery-item">
-      <img src="haven.jpeg" class="thumbnail" onclick="openModal(this.src)" />
-      <div class="caption">Uitzicht van uit het huis</div>
+      <div class="gallery-item">
+        <img src="haven.jpeg" class="thumbnail" onclick="openModal(this.src)" />
+        <div class="caption">Uitzicht van uit het huis</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="orkest.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        <div class="caption">Concert in Lemmer</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="gras.jpg" class="thumbnail" onclick="openModal(this.src)" />
+        <div class="caption">Sneekermeer in de zon</div>
+      </div>
+
     </div>
-
-    <div class="gallery-item">
-      <img src="orkest.jpg" class="thumbnail" onclick="openModal(this.src)" />
-      <div class="caption">Concert in Lemmer</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="gras.jpg" class="thumbnail" onclick="openModal(this.src)" />
-      <div class="caption">Sneekermeer in de zon</div>
-    </div>
-
   </div>
-</div>
 
-<hr size="44" width="100%"  color="green">
-  <!-- Modal -->
-  
+  <hr size="44" width="100%" color="green">
 
-  <!-- Reactieformulier -->
-  <script type="text/javascript" src="https://form.jotform.com/jsform/260180502059045"></script>
+  <!-- FORMULIER -->
+  <div class="form-container fade-in">
+    <h2>Laat een bericht achter</h2>
 
-  <!-- Footer -->
+    <form action="https://formspree.io/f/mnngzygl" method="POST">
+
+      <div class="input-group">
+        <i class="fa-solid fa-user icon"></i>
+        <input type="text" name="name" placeholder="Je naam" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa-solid fa-envelope icon"></i>
+        <input type="email" name="email" placeholder="Je e‑mailadres" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa-solid fa-comment icon"></i>
+        <textarea name="message" rows="5" placeholder="Je bericht..." required></textarea>
+      </div>
+
+      <input type="hidden" name="_redirect" value="https://jouwdomein.nl/bedankt.html">
+
+      <button type="submit">Verstuur</button>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p>&copy; 2025 <strong>robertwim</strong> — On the Road Again!</p>
       <div class="links">
-        <a href="https://twitter.com/robertwim" target="_blank" rel="noopener noreferrer">
+        <a href="https://twitter.com/robertwim" target="_blank">
           <img class="icon" src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
           <span>Twitter</span>
         </a>
-        <a href="https://github.com/robertwim" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/robertwim" target="_blank">
           <img class="icon" src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" />
           <span>GitHub</span>
         </a>
@@ -278,80 +365,33 @@
       </div>
     </div>
   </footer>
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightbox-img" src="">
-</div>
 
-  <!-- Scripts -->
-  <!-- EmailJS -->
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function() {
-    emailjs.init("7l8gdSuQd0FDscjJB");
-  })();
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="">
+  </div>
 
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  <!-- SCRIPTS -->
+  <script>
+    function openModal(src) {
+      const box = document.getElementById("lightbox");
+      const img = document.getElementById("lightbox-img");
+      img.src = src;
+      box.style.display = "flex";
+      box.style.animation = "fadeIn 0.3s ease-out forwards";
+    }
 
-    const form = this;
-    const naam = form.elements["from_name"].value;
-    const bericht = form.elements["message"].value;
+    function closeLightbox() {
+      const box = document.getElementById("lightbox");
+      box.style.animation = "fadeOut 0.25s ease-in forwards";
+      setTimeout(() => { box.style.display = "none"; }, 250);
+    }
+  </script>
 
-    emailjs.sendForm("robertwim", "template_kg3q0np", form)
-      .then(function() {
-        voegBerichtToe(naam, bericht);
-        form.reset();
-        alert("Bericht verzonden!");
-      })
-      .catch(function(error) {
-        console.error("EmailJS fout:", error);
-        alert("Er ging iets mis:\n" + JSON.stringify(error));
-      });
-  });
-
-  function voegBerichtToe(naam, bericht) {
-    const container = document.getElementById("berichten-container");
-    const blok = document.createElement("div");
-    blok.className = "bericht-blok";
-    blok.innerHTML = `
-      <strong>${naam}</strong><br>
-      <p>${bericht}</p>
-      <span class="verwijder-knop" onclick="this.parentElement.remove()">❌</span>
-    `;
-    container.prepend(blok);
-
-    let berichten = JSON.parse(localStorage.getItem("berichten")) || [];
-    berichten.unshift({ naam, bericht });
-    localStorage.setItem("berichten", JSON.stringify(berichten));
-  }
-</script>
-
-<!-- Lightbox scripts -->
-<script>
-function openModal(src) {
-  const box = document.getElementById("lightbox");
-  const img = document.getElementById("lightbox-img");
-
-  img.src = src;
-  box.style.display = "flex";
-  box.style.animation = "fadeIn 0.3s ease-out forwards";
-}
-
-function closeLightbox() {
-  const box = document.getElementById("lightbox");
-  box.style.animation = "fadeOut 0.25s ease-in forwards";
-
-  setTimeout(() => {
-    box.style.display = "none";
-  }, 250);
-}
-</script>
-
-<!-- Bootstrap JS (één keer!) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
-
