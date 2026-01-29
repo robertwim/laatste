@@ -81,6 +81,34 @@ body {
   font-size: 14px;
   color: #444;
 }
+.modal { display: none; position: fixed; z-index: 9999; inset: 0; /* vult het hele scherm */ background-color: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; padding: 0; /* heel belangrijk */ margin: 0; /* heel belangrijk */ }
+.modal-content {
+  max-width: 90vw;   /* gebruik viewport-breedte */
+  max-height: 90vh;  /* gebruik viewport-hoogte */
+  object-fit: contain; /* nooit uitrekken */
+  border-radius: 6px;
+  background-color: black;
+
+}
+
+.modal-caption {
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  margin-top: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+
 @media (max-width: 768px) {
   .gallery-row { flex-direction: column; }
   .gallery-item { width: 100%; }
@@ -289,32 +317,45 @@ footer img.icon { width:22px; height:22px; }
     <div class="blog-editor">
       <h5>📍 Thuis, 18 januari 2026</h5>
       <p>
-        We zijn in Friesland, om precies te zijn in Terherne, een plaats gelegen aan het Sneekermeer...
+       Er is even niets te melden vanuit de verre oorden, want we zijn weer terug in Nederland! Na maanden van reizen, avonturen en het ontdekken van nieuwe culturen, zijn we weer thuis aangekomen. Het voelt vreemd om weer in ons eigen bed te slapen en de vertrouwde omgeving te zien na zoveel tijd onderweg te zijn geweest.
       </p>
     </div>
   </div>
 
   <!-- GALLERY -->
   <div class="gallery-container">
-    <div class="gallery-row">
+  <div class="gallery-row">
 
-      <div class="gallery-item">
-        <img src="haven.jpeg" class="thumbnail" onclick="openModal(this.src)" />
-        <div class="caption">Uitzicht van uit het huis</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="orkest.jpg" class="thumbnail" onclick="openModal(this.src)" />
-        <div class="caption">Concert in Lemmer</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="gras.jpg" class="thumbnail" onclick="openModal(this.src)" />
-        <div class="caption">Sneekermeer in de zon</div>
-      </div>
-
+    <div class="gallery-item">
+      <img src="haven.jpeg" class="thumbnail"
+           onclick="openModal(this.src, this.nextElementSibling.textContent)" />
+      <div class="caption">Uitzicht vanuit het huis</div>
     </div>
+
+    <div class="gallery-item">
+      <img src="orkest.jpg" class="thumbnail"
+           onclick="openModal(this.src, this.nextElementSibling.textContent)" />
+      <div class="caption">Concert in Lemmer</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="gras.jpg" class="thumbnail"
+           onclick="openModal(this.src, this.nextElementSibling.textContent)" />
+      <div class="caption">Sneekermeer in de zon</div>
+    </div>
+
   </div>
+</div>
+<div id="modal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modal-img">
+  <div id="modal-caption" class="modal-caption"></div>
+</div>
+
+
+
+
+
 
   <hr size="44" width="100%" color="green">
 
@@ -364,29 +405,31 @@ footer img.icon { width:22px; height:22px; }
         </a>
       </div>
     </div>
+    
+
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="">
-  </div>
+  
 
   <!-- SCRIPTS -->
   <script>
-    function openModal(src) {
-      const box = document.getElementById("lightbox");
-      const img = document.getElementById("lightbox-img");
-      img.src = src;
-      box.style.display = "flex";
-      box.style.animation = "fadeIn 0.3s ease-out forwards";
-    }
+   
+<script>
+function openModal(src, captionText) {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modal-img").src = src;
+  document.getElementById("modal-caption").textContent = captionText;
+}
 
-    function closeLightbox() {
-      const box = document.getElementById("lightbox");
-      box.style.animation = "fadeOut 0.25s ease-in forwards";
-      setTimeout(() => { box.style.display = "none"; }, 250);
-    }
+
+
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+
   </script>
 
   <!-- Bootstrap JS -->
@@ -416,6 +459,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+</script>
+<script>
+function openModal(src, captionText) {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modal-img").src = src;
+  document.getElementById("modal-caption").textContent = captionText;
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 </script>
 
 </body>
