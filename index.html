@@ -15,248 +15,242 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-/* --- BODY --- */
-body {
-  background-color: #fff8dc;
-  font-family: 'Montserrat', sans-serif;
-  padding-top: 16px;
-}
+  /* --- BODY --- */
+  body {
+    background-color: #fff8dc;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 16px;
+  }
 
-/* --- NAVBAR --- */
-.navbar {
-  background-color: #f5e9d4;
-  border-radius: 12px;
-  width: 95%;
-  margin: 0 auto 20px auto;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  border: 1px solid #c2a679;
-}
-.navbar-brand,
-.navbar-nav .nav-link {
-  font-family: 'Special Elite', serif;
-  color: #5a4632 !important;
-}
+  /* --- NAVBAR --- */
+  .navbar {
+    background-color: #f5e9d4;
+    border-radius: 12px;
+    width: 95%;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border: 1px solid #c2a679;
+  }
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    font-family: 'Special Elite', serif;
+    color: #5a4632 !important;
+  }
 
-/* --- SLIDESHOW --- */
-.carousel-item {
-  transition: opacity 1s ease-in-out;
-  min-height: 300px;
-}
-.carousel-caption {
-  font-size: 1.2em;
-  color: #fff;
-}
+  /* --- SLIDESHOW --- */
+  .carousel-item {
+    transition: opacity 1s ease-in-out;
+    min-height: 300px;
+  }
+  .carousel-caption {
+    font-size: 1.2em;
+    color: #fff;
+  }
 
-/* --- BLOG EDITOR --- */
-.blog-editor {
-  background: #fff8e1;
-  border: 2px solid #a67c52;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+  /* --- BLOG EDITOR --- */
+  .blog-editor {
+    background: #fff8e1;
+    border: 2px solid #a67c52;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
 
-/* --- GALLERY --- */
-.gallery-container {
-  display: flex;
-  justify-content: center;
-}
-.gallery-row {
-  display: flex;
-  gap: 15px;
-}
-.gallery-item {
-  width: 30%;
-  text-align: center;
-}
-.gallery-item img.thumbnail {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.caption {
-  margin-top: 6px;
-  font-size: 14px;
-  color: #444;
-}
-.modal { display: none; position: fixed; z-index: 9999; inset: 0; /* vult het hele scherm */ background-color: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; padding: 0; /* heel belangrijk */ margin: 0; /* heel belangrijk */ }
-.modal-content {
-  max-width: 90vw;   /* gebruik viewport-breedte */
-  max-height: 90vh;  /* gebruik viewport-hoogte */
-  object-fit: contain; /* nooit uitrekken */
-  border-radius: 6px;
-  background-color: black;
+  /* --- GALLERY --- */
+  .gallery-container {
+    display: flex;
+    justify-content: center;
+  }
+  .gallery-row {
+    display: flex;
+    gap: 15px;
+  }
+  .gallery-item {
+    width: 30%;
+    text-align: center;
+  }
+  .gallery-item img.thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .caption {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #444;
+  }
 
-}
+  /* --- MODAL --- */
+  .modal {
+    display: none; /* verborgen bij laden */
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
 
-.modal-caption {
+  }
+
+  .modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 6px;
+    background-color: black;
+  }
+
+  .modal-caption {
   text-align: center;
   color: #fff;
   font-size: 18px;
   margin-top: 12px;
   font-family: 'Montserrat', sans-serif;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  cursor: pointer;
-}
-
-
-@media (max-width: 768px) {
-  .gallery-row { flex-direction: column; }
-  .gallery-item { width: 100%; }
-}
-
-/* --- LIGHTBOX --- */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.3s ease-out forwards;
-}
-.lightbox img {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.7);
-}
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-}
-
-/* --- ANIMATIES --- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes fadeOut {
-  from { opacity: 1; transform: scale(1); }
-  to   { opacity: 0; transform: scale(0.97); }
-}
-.fade-in {
   opacity: 0;
-  animation: fadeIn 1.2s ease forwards;
+  animation: captionFade 0.8s ease forwards;
+  animation-delay: 0.15s;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* zachte schaduw */
 }
 
-/* --- FORMULIER (KAART-EFFECT + ICONEN) --- */
-.form-container {
-  background: #fffdf7;
-  border: 1px solid #e2d3b5;
-  border-radius: 16px;
-  padding: 35px;
-  max-width: 520px;
-  margin: 50px auto;
-  text-align: center;
-  position: relative;
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+  }
 
-  box-shadow:
-    0 4px 8px rgba(0,0,0,0.08),
-    0 8px 20px rgba(0,0,0,0.12);
+  @media (max-width: 768px) {
+    .gallery-row { flex-direction: column; }
+    .gallery-item { width: 100%; }
+  }
 
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.form-container:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 6px 12px rgba(0,0,0,0.10),
-    0 12px 28px rgba(0,0,0,0.18);
-}
-.form-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.6);
-  pointer-events: none;
-}
-.form-container h2 {
-  color: #a67c52;
-  margin-bottom: 20px;
-  font-family: 'Segoe UI', sans-serif;
+  /* --- ANIMATIES --- */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+  }
+  @keyframes captionFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Inputgroep */
-.input-group {
-  position: relative;
-  margin-bottom: 15px;
-}
-.input-group .icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #a67c52;
-}
-.input-group input,
-.input-group textarea {
-  width: 100%;
-  padding: 10px 10px 10px 40px;
-  border: 1px solid #a67c52;
-  border-radius: 8px;
-  font-size: 15px;
-  background-color: #fff;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
 
-/* Knop */
-.form-container button {
-  background-color: #a67c52;
-  color: #fff8e1;
-  border: none;
-  padding: 10px 20px;
-  font-size: 17px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.form-container button:hover {
-  background-color: #8b5e3c;
-}
+  /* --- FORMULIER (KAART-EFFECT + ICONEN) --- */
+  .form-container {
+    background: #fffdf7;
+    border: 1px solid #e2d3b5;
+    border-radius: 16px;
+    padding: 35px;
+    max-width: 520px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    box-shadow:
+      0 4px 8px rgba(0,0,0,0.08),
+      0 8px 20px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .form-container:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 6px 12px rgba(0,0,0,0.10),
+      0 12px 28px rgba(0,0,0,0.18);
+  }
+  .form-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.6);
+    pointer-events: none;
+  }
+  .form-container h2 {
+    color: #a67c52;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
 
-/* --- FOOTER --- */
-footer {
-  background:#000;
-  color:#fff;
-  text-align:center;
-  padding:24px 16px;
-  margin-top:40px;
-}
-footer .links {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  align-items:center;
-  margin-top:10px;
-}
-footer .links a {
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:500;
-}
-footer .links a:hover { text-decoration:underline; }
-footer img.icon { width:22px; height:22px; }
+  /* Inputgroep */
+  .input-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .input-group .icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #a67c52;
+  }
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #a67c52;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  }
 
+  /* Knop */
+  .form-container button {
+    background-color: #a67c52;
+    color: #fff8e1;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .form-container button:hover {
+    background-color: #8b5e3c;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    background:#000;
+    color:#fff;
+    text-align:center;
+    padding:24px 16px;
+    margin-top:40px;
+  }
+  footer .links {
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    align-items:center;
+    margin-top:10px;
+  }
+  footer .links a {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
+  }
+  footer .links a:hover { text-decoration:underline; }
+  footer img.icon { width:22px; height:22px; }
   </style>
 </head>
 
@@ -317,45 +311,42 @@ footer img.icon { width:22px; height:22px; }
     <div class="blog-editor">
       <h5>📍 Thuis, 18 januari 2026</h5>
       <p>
-       Er is even niets te melden vanuit de verre oorden, want we zijn weer terug in Nederland! Na maanden van reizen, avonturen en het ontdekken van nieuwe culturen, zijn we weer thuis aangekomen. Het voelt vreemd om weer in ons eigen bed te slapen en de vertrouwde omgeving te zien na zoveel tijd onderweg te zijn geweest.
+        Er is even niets te melden vanuit de verre oorden, want we zijn weer terug in Nederland! Na maanden van reizen, avonturen en het ontdekken van nieuwe culturen, zijn we weer thuis aangekomen. Het voelt vreemd om weer in ons eigen bed te slapen en de vertrouwde omgeving te zien na zoveel tijd onderweg te zijn geweest.
       </p>
     </div>
   </div>
 
   <!-- GALLERY -->
   <div class="gallery-container">
-  <div class="gallery-row">
+    <div class="gallery-row">
 
-    <div class="gallery-item">
-      <img src="haven.jpeg" class="thumbnail"
-           onclick="openModal(this.src, this.nextElementSibling.textContent)" />
-      <div class="caption">Uitzicht vanuit het huis</div>
+      <div class="gallery-item">
+        <img src="haven.jpeg" class="thumbnail"
+             onclick="openModal(this.src, this.nextElementSibling.textContent)" />
+        <div class="caption">Uitzicht vanuit het huis</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="orkest.jpg" class="thumbnail"
+             onclick="openModal(this.src, this.nextElementSibling.textContent)" />
+        <div class="caption">Concert in Lemmer</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="gras.jpg" class="thumbnail"
+             onclick="openModal(this.src, this.nextElementSibling.textContent)" />
+        <div class="caption">Sneekermeer in de zon</div>
+      </div>
+
     </div>
-
-    <div class="gallery-item">
-      <img src="orkest.jpg" class="thumbnail"
-           onclick="openModal(this.src, this.nextElementSibling.textContent)" />
-      <div class="caption">Concert in Lemmer</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="gras.jpg" class="thumbnail"
-           onclick="openModal(this.src, this.nextElementSibling.textContent)" />
-      <div class="caption">Sneekermeer in de zon</div>
-    </div>
-
   </div>
-</div>
-<div id="modal" class="modal" onclick="closeModal()">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modal-img">
-  <div id="modal-caption" class="modal-caption"></div>
-</div>
 
-
-
-
-
+  <!-- MODAL -->
+  <div id="modal" class="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal(); event.stopPropagation();">&times;</span>
+    <img class="modal-content" id="modal-img">
+    <div id="modal-caption" class="modal-caption"></div>
+  </div>
 
   <hr size="44" width="100%" color="green">
 
@@ -364,7 +355,6 @@ footer img.icon { width:22px; height:22px; }
     <h2>Laat een bericht achter</h2>
 
     <form action="https://formspree.io/f/mnngzygl" method="POST">
-
       <div class="input-group">
         <i class="fa-solid fa-user icon"></i>
         <input type="text" name="name" placeholder="Je naam" required>
@@ -405,72 +395,57 @@ footer img.icon { width:22px; height:22px; }
         </a>
       </div>
     </div>
-    
-
   </footer>
 
-  
-
   <!-- SCRIPTS -->
+
+  <!-- Modal script (één keer, schoon) -->
   <script>
-   
-<script>
-function openModal(src, captionText) {
-  document.getElementById("modal").style.display = "block";
-  document.getElementById("modal-img").src = src;
-  document.getElementById("modal-caption").textContent = captionText;
-}
+  function openModal(src, captionText) {
+    const modal = document.getElementById("modal");
+    const img = document.getElementById("modal-img");
+    const caption = document.getElementById("modal-caption");
 
+    modal.style.display = "flex"; // flex zodat centreren werkt
+    img.src = src;
+    caption.textContent = captionText;
+  }
 
-
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-</script>
-
-
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
   </script>
 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault(); // voorkom standaard versturen
+  <!-- Formspree + redirect -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
 
-    const formData = new FormData(form);
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault(); // voorkom standaard versturen
 
-    // Verstuur naar Formspree
-    const response = await fetch("https://formspree.io/f/mnngzygl", {
-      method: "POST",
-      body: formData,
-      headers: { "Accept": "application/json" }
+      const formData = new FormData(form);
+
+      // Verstuur naar Formspree
+      const response = await fetch("https://formspree.io/f/mnngzygl", {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (response.ok) {
+        // Succes → stuur door naar jouw eigen bedankpagina
+        window.location.href = "bedankt.html";
+      } else {
+        alert("Er ging iets mis bij het versturen. Probeer het later opnieuw.");
+      }
     });
-
-    if (response.ok) {
-      // Succes → stuur door naar jouw eigen bedankpagina
-      window.location.href = "bedankt.html";
-    } else {
-      alert("Er ging iets mis bij het versturen. Probeer het later opnieuw.");
-    }
   });
-});
-</script>
-<script>
-function openModal(src, captionText) {
-  document.getElementById("modal").style.display = "block";
-  document.getElementById("modal-img").src = src;
-  document.getElementById("modal-caption").textContent = captionText;
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-</script>
+  </script>
 
 </body>
 </html>
