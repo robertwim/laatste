@@ -1,0 +1,513 @@
+/* Algemene layout */
+
+/* Tekstblok */
+.content-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.tekstblok {
+  background-color: #f5e9d4;
+  border-radius: 12px;
+  padding: 24px 28px;
+  border: 1px solid #c2a679;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.tekstblok-title {
+  font-family: 'Special Elite', serif;
+  font-size: 1.8rem;
+  color: #5a4632;
+  margin-bottom: 12px;
+}
+
+.tekstblok-subtitle {
+  font-size: 0.95rem;
+  color: #8a7355;
+  margin-bottom: 16px;
+}
+
+.tekstblok-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a3a29;
+}
+
+/* Slideshow */
+.slideshow-img {
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #c2a679;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.carousel-caption h5 {
+  font-family: 'Special Elite', serif;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+.carousel-caption p {
+  font-size: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+.carousel-indicators li {
+  background-color: #c2a679;
+}
+
+.carousel-indicators .active {
+  background-color: #5a4632;
+}
+
+/* Fotokaarten */
+.fotokaart {
+  background-color: #f5e9d4;
+  border: 1px solid #c2a679;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fotokaart:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.fotokaart-img {
+  border-radius: 8px;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.fotokaart-titel {
+  background-color: #f7efe0;
+  border: 1px solid #c2a679;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: 'Special Elite', serif;
+  font-size: 1.1rem;
+  color: #5a4632;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.fotokaart-ondertekst {
+  background-color: #fffaf2;
+  border: 1px solid #d1b892;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  color: #6a5844;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Teaser-kaart zelf */
+.fotokaart.teaser { background-color: #f5e9d4; /* zelfde beige als galerij */ border: 2px solid #c2a679; /* DUNNERE rand */ border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* zelfde schaduw */ }
+
+/* Teaser-foto */
+/* Teaser-foto */ .fotokaart.teaser img { width: 100%; height: 180px; object-fit: cover; border-bottom: 2px solid #c2a679; /* dunne rand */ }
+/* Navigatie-knop */
+/* Navigatie-knop */ .teaser-btn { width: 100%; background-color: #8b735a; color: #fff; border: none; padding: 12px 0; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s ease; border-radius: 0; }
+
+/* Hover */ .teaser-btn:hover { background-color: #a48c6d; }
+
+/* Beschrijvingsblok */
+/* Beschrijvingsblok onder de knop */ .teaser-info { background-color: #f5e9d4; /* zelfde beige */ color: #5a4632; /* zelfde tekstkleur */ border-top: 2px solid #c2a679; /* dunne rand */ padding: 10px 8px; font-size: 0.85rem; font-family: 'Open Sans', sans-serif; text-align: center; line-height: 1.3; }
+
+/* Tekstblok */
+.tekstblok {
+  background-color: #3a332e;
+  border: 1px solid #8b735a;
+  color: #e8dfd4;
+}
+
+.tekstblok-title {
+  color: #f0e6d8;
+}
+
+.tekstblok-subtitle {
+  color: #c8b8a4;
+}
+
+.tekstblok-body {
+  color: #e8dfd4;
+}
+
+/* Slideshow */
+.slideshow-img {
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #8b735a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+.carousel-indicators li {
+  background-color: #8b735a;
+}
+
+.carousel-indicators .active {
+  background-color: #f0e6d8;
+}
+
+/* Fotokaarten */
+.fotokaart {
+  background-color: #3a332e;
+  border: 1px solid #8b735a;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.fotokaart:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.fotokaart-img {
+  border-radius: 8px;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.fotokaart-titel {
+  background-color: #4a423c;
+  border: 1px solid #8b735a;
+  color: #f0e6d8;
+}
+
+.fotokaart-ondertekst {
+  background-color: #5a514a;
+  border: 1px solid #a48c74;
+  color: #e8dfd4;
+}
+
+/* ----------------------------------------------------
+   ALGEMENE LAYOUT
+---------------------------------------------------- */
+body {
+  background-color: #2b2622;
+  color: #e8dfd4;
+}
+
+
+/* Fade-in animatie */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------------
+   NAVBAR (donkere stijl)
+---------------------------------------------------- */
+.navbar {
+  background-color: #3a332e !important;
+}
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #f0e6d8 !important;
+  font-family: 'Special Elite', serif;
+}
+.navbar-nav .nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* ----------------------------------------------------
+   SLIDESHOW
+---------------------------------------------------- */
+#slideshow {
+  position: relative;
+  overflow: hidden;
+}
+.slideshow-img {
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #c2a679;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
+.carousel-caption h5 {
+  font-family: 'Special Elite', serif;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+.carousel-caption p {
+  font-size: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+.carousel-indicators li {
+  background-color: #c2a679;
+}
+.carousel-indicators .active {
+  background-color: #5a4632;
+}
+
+/* ----------------------------------------------------
+   TEKSTBLOK (lichte stijl)
+---------------------------------------------------- */
+.content-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+}
+.tekstblok {
+  background-color: #f5e9d4;
+  border-radius: 12px;
+  padding: 24px 28px;
+  border: 1px solid #c2a679;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.tekstblok-title {
+  font-family: 'Special Elite', serif;
+  font-size: 1.8rem;
+  color: #5a4632;
+}
+.tekstblok-subtitle {
+  font-size: 0.95rem;
+  color: #8a7355;
+}
+.tekstblok-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a3a29;
+}
+
+/* ----------------------------------------------------
+   FOTOKAARTEN (galerij)
+---------------------------------------------------- */
+.fotokaart {
+  background-color: #f5e9d4;
+  border: 1px solid #c2a679;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fotokaart:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.fotokaart-img {
+  border-radius: 8px;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.fotokaart-titel {
+  background-color: #f7efe0;
+  border: 1px solid #c2a679;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: 'Special Elite', serif;
+  font-size: 1.1rem;
+  color: #5a4632;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.fotokaart-ondertekst {
+  background-color: #fffaf2;
+  border: 1px solid #d1b892;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  color: #6a5844;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ----------------------------------------------------
+   TEASERS (nu exact dezelfde stijl als fotokaarten)
+---------------------------------------------------- */
+.fotokaart.teaser {
+  background-color: #f5e9d4;
+  border: 2px solid #c2a679;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.fotokaart.teaser img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 2px solid #c2a679;
+}
+
+.teaser-info {
+  background-color: #f5e9d4;
+  color: #5a4632;
+  border-top: 2px solid #c2a679;
+  padding: 10px 8px;
+  font-size: 0.85rem;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ----------------------------------------------------
+   MODAL
+---------------------------------------------------- */
+#modalImage {
+  max-height: 90vh;
+  object-fit: contain;
+}
+.modal.fade .modal-dialog {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.45s ease;
+}
+.modal.fade.show .modal-dialog {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ----------------------------------------------------
+   FORMULIER
+---------------------------------------------------- */
+.form-container {
+  background: #fffdf7;
+  border: 1px solid #e2d3b5;
+  border-radius: 16px;
+  padding: 35px;
+  max-width: 520px;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.12);
+}
+.form-container h2 {
+  color: #a67c52;
+}
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+.input-group .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #a67c52;
+}
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #a67c52;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.form-container button {
+  background-color: #a67c52;
+  color: #fff8e1;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.form-container button:hover {
+  background-color: #8b5e3c;
+}
+
+/* ----------------------------------------------------
+   FOOTER (donker)
+---------------------------------------------------- */
+footer {
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:24px 16px;
+  margin-top:40px;
+  border-top: 2px solid #8b735a;
+}
+footer .links {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  margin-top:10px;
+}
+footer .links a {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+  text-decoration:none;
+}
+footer img.icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0.9);
+  transition: 0.25s ease;
+}
+footer img.icon:hover {
+  filter: brightness(1.4);
+  transform: scale(1.15);
+}
+
+/* ----------------------------------------------------
+   SCROLL-TO-TOP KNOP
+---------------------------------------------------- */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background-color: #8b735a;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.25s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  z-index: 9999;
+}
+#scrollTopBtn:hover {
+  background-color: #a48c6d;
+  transform: scale(1.1);
+}
+/* Teaser-knoppen in stijl van fotokaarten */
+.teaser-btn {
+  width: 100%;
+  background-color: #f7efe0;        /* zelfde beige als fotokaart-titel */
+  border: 1px solid #c2a679;        /* zelfde goud-bruin */
+  border-radius: 6px;               /* zelfde afronding */
+  padding: 10px 8px;
+  font-family: 'Special Elite', serif;  /* zelfde font */
+  font-size: 1.1rem;
+  color: #5a4632;                   /* zelfde warme bruine tekst */
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  margin-top: 8px;
+}
+
+.teaser-btn:hover {
+  background-color: #fffaf2;        /* lichte hover zoals fotokaart */
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
