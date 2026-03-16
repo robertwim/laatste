@@ -337,6 +337,45 @@ scrollBtn.addEventListener("click", function() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 </script>
+<script>
+document.querySelector(".form-container form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const form = e.target;
+
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { "Accept": "application/json" }
+  })
+  .then(() => {
+    window.location.href = "https://robertwim.nl/bedankt.html";
+  })
+  .catch(() => {
+    window.location.href = "https://robertwim.nl/bedankt.html";
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector(".form-container form");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    })
+    .then(() => {
+      window.location.href = "https://robertwim.nl/bedankt.html";
+    })
+    .catch(() => {
+      window.location.href = "https://robertwim.nl/bedankt.html";
+    });
+  });
+});
+</script>
 
 </body>
 </html>
