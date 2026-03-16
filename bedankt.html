@@ -33,7 +33,7 @@
       border: 1px solid #e2d3b5;
       border-radius: 16px;
       padding: 40px 30px;
-      max-width: 520px;
+      max-width: 480px; /* iets smaller */
       margin: 60px auto;
       box-shadow:
         0 4px 8px rgba(0,0,0,0.08),
@@ -48,6 +48,14 @@
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.6);
       pointer-events: none;
+    }
+
+    /* Icoontje bovenaan */
+    .icon {
+      font-size: 48px;
+      color: #a67c52;
+      margin-bottom: 10px;
+      opacity: 0.9;
     }
 
     h1 {
@@ -65,7 +73,7 @@
     /* Knop */
     .btn {
       display: inline-block;
-      background-color: #a67c52;
+      background-color: #8b5e3c; /* iets donkerder */
       color: #fff8e1;
       padding: 12px 24px;
       border-radius: 8px;
@@ -75,7 +83,7 @@
     }
 
     .btn:hover {
-      background-color: #8b5e3c;
+      background-color: #6f482e;
     }
   </style>
 </head>
@@ -83,6 +91,7 @@
 <body>
 
   <div class="card fade-in">
+    <div class="icon">✔</div>
     <h1>Bedankt!</h1>
     <p>Dank je wel. Je bericht is veilig geland in onze inbox.</p>
 
